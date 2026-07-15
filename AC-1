@@ -1,0 +1,59 @@
+Description
+
+As an Insurance Services/Benefits Mgmt colleague, I want the ability to add a new exception record fora specific customer to override their Life/DI price bands so we can give them a concession on cost.
+
+This story is for the UI of the of the Add New Exception button on the new Life and Disability Band Exception page. 
+
+Acceptance Criteria:
+
+Given I’m an Insurance Services colleague with access to Admin Apps > Benefits Gateway > Life an Disability Bands Exception page
+
+When I click the Add New Exception button 
+
+Then 
+
+A template for adding a new row is now visible above the grid.  (See highlighted area in attached screenshot)
+
+This template has fields for the following:
+
+Company Code - editable textbox, blank by default
+
+Company Name - not editable
+
+Start Date - not editable, user must use the date icon to open data picker 
+
+End Date - not editable, user must use the date icon to open data picker 
+
+Assigned Life Band 
+
+not editable, pulls current Life Band for customer, which is tied to NAICS
+
+Override Life Band
+
+dropdown - user can select from hardcoded list of 1, 2, 3, 4
+
+Assigned Disability Band
+
+not editable, pulls current Life Band for customer, which is tied to NAICS
+
+Override Disability Band
+
+dropdown - user can select from hardcoded list of 1, 2, 3, 4
+
+Approver - dropdown, prepopulated. 
+
+Use same names list as the “plan type exception” page's approver list
+
+When I refresh page 
+
+Technical Details: 
+1. In BNFT-55687, we created a new component “new-life-&-di-exception“. Inside this component, add the code for each field mentioned in the Jira. Refer “new-exception” component. 
+2. Use mat-date picker for date components and reuse “app-combobox” component. 
+3. When user enters companyCode and focuses out, call getAllCompanies() in exception-service.ts file 
+4. Store Override Life Band and Override Disability Band values in statically in UI.
+5. Approver will use the same static list as in plan-type exception 
+6. On change of CompanyCode , an API call should be made to fetch company name , 
+
+
+
+

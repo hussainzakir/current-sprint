@@ -1,0 +1,52 @@
+Key details
+Description
+
+As an Insurance Services/Benefits Mgmt colleague, I want the ability to override the Life and/or DI price bands assigned to a customer so they can be used in BSS for discounted pricing. To do this, we’re creating  a new Admin App page that allows HPP users to view all existing Life and DI band overrides for customers and then add/edit these pricing exceptions.
+
+This story is for the general UI work for the new tile on Benefits Gateway 
+
+General design of new page:
+
+The page will be based off of other pages in the Benefits Gateway Section of Admin App pages for exceptions that are already in use, such as: Minimum Funding Exceptions, Benefit Offer Exceptions, Plan Deselection Exception. 
+
+ 
+
+Acceptance Criteria:
+Given I’m an Insurance Services colleague with access to Admin Apps > Benefits Gateway > exception pages
+
+When I click on the Benefits Gateway link in Admin Apps
+
+Then 
+
+I see a new tile in the Benefits Gateway page under the “Benefits Strategy Solutions Maintenance” section
+
+The new tiles title is “Life & Disability Band Exceptions” 
+
+The description text on the box says: “View, edit, add, or delete Customer-level band exceptions for Life and/or Disability plans”
+
+A Launch Now link is used to open page
+
+When I click on the Launch Now link of the new tile
+
+Then I am redirected to this url , /ui-bss-admin/#/LifeAndDisabilityBand-Exceptions, that opens in ui-bss-admin app 
+
+
+Technical Details: 
+
+1. No UI change needed , API will send the newly added tile in response and just test it should be displayed in UI . 
+In ui-benefits repo , admin-apps-service.ts file → getAdminApps() is calling the API to get the tiles . 
+
+2. In app.json , add a new object in “groupId” : 1001 in the end , inside “apps” array. This is to match the API response , the tile will be displayed from API response not this file.
+
+
+
+
+        {
+          "id": 1008,
+          "name": "Life & Disability Band Exceptions",
+          "description": "View, edit, add, or delete Customer-level band exceptions for Life and/or Disability plans",
+          "url": "/ui-bss-admin/#/LifeAndDisabilityBand-Exceptions",
+          "target": "EXTERNAL",
+          "displayOrder": 5,
+          "icons": []
+        }
