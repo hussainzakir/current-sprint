@@ -1,0 +1,293 @@
+$fontfamily: 'Centra No2', sans-serif;
+@mixin collapse-expand($deg) {
+  transform: rotate($deg);
+  transition: transform 300ms;
+}
+
+::ng-deep {
+  .cdk-overlay-container .cdk-overlay-pane {
+    & .ng-trigger.ng-trigger-transformPanel.mat-select-panel.mat-primary {
+      &.searchDropdown {
+        margin-left: 10px !important;
+        margin-top: 30px !important;
+
+        & input {
+          padding: 20px !important;
+        }
+      }
+
+      &.searchDropdownCard {
+        margin-left: 33px !important;
+        margin-top: 30px !important;
+
+        & input {
+          padding: 20px !important;
+        }
+      }
+    }
+  }
+
+  .mat-form-field-infix {
+    & input {
+      color: #242936 !important;
+      font-size: 14px !important;
+      font-family: $fontfamily;
+    }
+
+    .mat-select-value-text {
+      font-size: 14px !important;
+    }
+
+    & input:focus {
+      box-shadow: none !important;
+    }
+
+    & .mat-input-element {
+      border-color: #0077BC !important;
+      font-family: $fontfamily  !important;
+      color: #242936 !important;
+      font-size: 14px !important;
+      padding: 0 2px;
+    }
+
+    & .mat-form-field-label {
+      font-size: 12px !important;
+    }
+
+    & .mat-form-field-label-wrapper {
+      font-size: 14px;
+    }
+  }
+}
+
+.content-panel {
+  padding: 29px 0 36px 24px;
+  margin-bottom: 10px;
+}
+
+.content-panel-two {
+  padding: 20px 0 35px 24px;
+  margin-bottom: 10px;
+}
+
+.plan-error {
+  display: inline-flex;
+  font-style: normal;
+  font-family: $fontfamily;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+  margin-left: -8px;
+  color: #E61C36;
+
+  & p {
+    margin-top: 2px;
+    margin-left: 2px;
+    color: #E61C36;
+  }
+
+  & mat-icon {
+    font-size: 20px;
+  }
+}
+
+.company {
+  width: 290px;
+  height: 48px;
+  font-family: $fontfamily  !important;
+}
+
+.plangrid {
+  display: flex;
+  padding-bottom: 35px;
+}
+
+.current-plan {
+  display: flex;
+  padding: 32px 0;
+}
+
+.clear {
+  padding: 0 35px 0 25px;
+  display: flex;
+  align-items: center;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  font-family: $fontfamily;
+  cursor: pointer;
+  letter-spacing: 0.002em;
+  color: #0077BC;
+}
+
+.compare-btn {
+  font-family: $fontfamily;
+  width: 162px;
+  height: 36px;
+  border-radius: 4px;
+  border: 2px solid;
+  border-color: #0077BC;
+  font-style: normal;
+  padding: 9px 20px 9px 20px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.002em;
+  color: #0077BC;
+  background: #FFFFFF;
+}
+
+button[disabled="true"].compare-btn{
+  color: #6E7789;
+  background: #F8F9FA;
+  border-color: #DDE1E6;
+}
+
+.image-comparision {
+  width: 806px;
+  height: 498px;
+}
+
+.plan-content {
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 33px;
+  letter-spacing: 0.002em;
+  text-align: center;
+  font-family: $fontfamily;
+  color: #444C5C;
+}
+
+.company-name {
+  display: inline-block;
+  margin-left: 37px;
+  top: 45px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.002em;
+  font-family: $fontfamily;
+  color: #000000;
+}
+
+.sub-header {
+  font-weight: 600;
+  font-size: 24px;
+  font-family: $fontfamily;
+  letter-spacing: 0.002em;
+  color: #000000;
+}
+
+.field-text {
+  font-family: $fontfamily;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.002em;
+  color: #242936;
+  padding-left: 2px;
+}
+
+.table{
+  font-family: $fontfamily;
+  font-style: normal;
+  font-size: 16px;
+  width: 98%;
+  line-height: 19px;
+  letter-spacing: 0.002em;
+  color: #242936;
+  border-bottom: 1px solid #B3BDC7;
+}
+
+.table-data {
+  height: 48px;
+  padding: 16px 16px 16px 0px;
+}
+
+th {
+  width: 28%;
+  font-weight: 600px;
+  height: 48px;
+  padding: 12px 0px;
+  border-width: 1px 0px;
+  border-style: solid;
+  border-color: #6E7789;
+  font-size: 16px !important;
+  cursor: inherit;
+}
+
+th:last-child {
+  width: 4%;
+}
+
+td{
+  padding: 0px;
+}
+
+td:first-child{
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.remove-button{
+  cursor: pointer;
+  color: #0077BC;
+}
+
+.export-div {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 30px;
+}
+
+.export-button {
+  font-family: $fontfamily;
+  font-weight: 600;
+  margin-right: 2.5%;
+  height: 36px;
+  width: 81px;
+  background: #0077BC;
+  border: 2px solid #0077BC;
+  border-radius: 4px;
+  font-size: 14px;
+  letter-spacing: 0.002em;
+  color: #FFFFFF;
+}
+
+.spinner{
+  margin-left: 0px;
+}
+
+.spinner-background {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 3;
+}
+
+.collapse-all{
+  @include collapse-expand(180deg);
+  position: relative;
+}
+
+.expand-all{
+  @include collapse-expand(0deg);
+  position: relative;
+}
+
+.collapse-indv{
+  @include collapse-expand(180deg);
+  position: relative;
+  top: 5px;
+}
+
+.expand-indv{
+  @include collapse-expand(0deg);
+  position: relative;
+  bottom: 3px;
+}

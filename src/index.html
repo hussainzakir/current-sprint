@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Bss-Admin</title>
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+
+    <!-- MUST be before the TN bootstrap library-->
+    <script id="tnBootstrapLibId" data-container="child" data-platform="portal"
+        src="https://trinet-cms.hrpassport.com/trinet-eng-common/assets/en-us/libraries/ui/tn_loaders/tnBootstrap.js">
+    </script>
+    
+    <!-- Google tag (gtag.js) -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+    </script>
+
+    <script id="tnGaLoaderGaId">
+        window.tnGaId = 'none';
+    </script>
+
+
+    <!-- REQUIRED: data-container must be 'parent' (parent == is parent of child iframe apps) or 'child' (child == inside iframe) -->
+    <!-- REQUIRED: data-platform must be specified: 'portal', 'wfa', 'cloud', 'salesforce' -->
+    <!-- optional parameter: data-app-name="yourUniqueAppNameOverride" -->
+    <!-- optional parameter: data-debug-force-env-to-lower="true" -->
+    <!-- optional parameter: data-debug-force-env-to-prod="true" -->
+
+</head>
+
+<body>
+    <nav class="header">
+        <div class="header-container">
+
+            <div class="trinet-logo">
+                
+            </div>
+            <div class="clear-fix"></div>
+        </div>
+    </nav>
+    <div class="clear-fix"></div>
+    <app-root></app-root>
+</body>
+
+</html>

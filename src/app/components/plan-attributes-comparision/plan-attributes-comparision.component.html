@@ -1,0 +1,156 @@
+<div *ngIf="showSpinner" class="spinner-background">
+    <div class="spinner"></div>
+</div>
+<h4 class="page-title">{{pageTitle}}</h4>
+<tn-common-alert-banner *ngIf="bannerMessage.bannerMessageShow" [type]="bannerMessage.bannerMessageType"
+    [position]="'top'" [message]="bannerMessage.bannerMessageText" [button1]="'Dismiss'"
+    (click)="bannerMessage.bannerMessageShow=!bannerMessage.bannerMessageShow">
+</tn-common-alert-banner>
+<section [formGroup]="form">
+    <div class="gs-card content-panel">
+        <mat-form-field class="company" appearance="outline">
+            <mat-label>Company Code</mat-label>
+            <input matInput formControlName="companyId" (blur)="searchCompany($event)">
+            <mat-error class="plan-error" *ngIf="companyId?.invalid">
+                <mat-icon *ngIf="showCompanyError">info</mat-icon>
+                <p>{{companyError}}</p>
+            </mat-error>
+        </mat-form-field>
+        <ng-container *ngIf="companyName">
+            <p class="company-name">{{ companyName }}</p>
+        </ng-container>
+    </div>
+    <div class="gs-card content-panel-two">
+        <form id="plans-selection-form" [formGroup]="planSelectionForm" (ngSubmit)="onAddToCompare()">
+            <h4 class="mt-0 sub-header">Select Current Plan to Compare Attributes</h4>
+
+            <div class="current-plan">
+                <mat-form-field class="company" appearance="outline">
+                    <mat-label>Current Year Plans</mat-label>
+                    <mat-select [formControl]="currentPlansControl" panelClass="searchDropdown"
+                        (openedChange)="onCurrentPlanSelection(); currentSearchInput.value = ''"
+                        (selectionChange)="onCurrentPlanSelection()">
+                        <mat-select-trigger *ngIf="currentPlansControl.value.planName">
+                            {{currentPlansControl.value.planName }}
+                        </mat-select-trigger>
+                        <input type="text" #currentSearchInput autocomplete="off" matInput
+                            placeholder="Search By Current Year Plan" (input)="onFilterPlans($event,'current-plan')"
+                            (keydown)="$event.stopPropagation();" />
+                        <mat-option *ngFor="let current of filteredCurrentPlans" [value]="current">{{current.planName}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div class="clear" (click)="clear('current-year-plan')">
+                    <div class="material-icons">clear</div>
+                    <div>Clear Selection</div>
+                </div>
+            </div>
+            <div class="plangrid">
+                <div>
+                    <mat-form-field class="company" appearance="outline">
+                        <mat-label>Mapped Plans</mat-label>
+                        <mat-select #matRefMapped multiple [formControl]="mappedPlansControl"
+                            (openedChange)="onMappedPlanOpen(); mapSearchInput.value = ''"
+                            panelClass="searchDropdownCard">
+                            <mat-select-trigger *ngIf="mappedPlansControl.value.length > 0">
+                                {{changeToArrayFormat(mappedPlansControl.value)}}
+                            </mat-select-trigger>
+                            <input type="text" #mapSearchInput autocomplete="off" matInput
+                                placeholder="Search By Mapped Plans" (input)="onFilterPlans($event,'mapped-plan')"
+                                (keydown)="$event.stopPropagation();" />
+                            <mat-option *ngFor="let mapped of filteredMappedPlans" [value]="mapped"
+                                (click)="onMappedPlanSelection(mapped)">
+                                {{mapped.planName}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p class="field-text">Select 1 or more plans</p>
+                </div>
+                <div class="clear mb-5" (click)="clear('mapped-plan')">
+                    <div class="material-icons">clear</div>
+                    <div>Clear Selection</div>
+                </div>
+
+                <div class="ml-5">
+                    <mat-form-field class="company" appearance="outline">
+                        <mat-label>All Plans</mat-label>
+                        <mat-select #matRefAll multiple [formControl]="allPlansControl" panelClass="searchDropdownCard"
+                            (openedChange)="onAllPlanOpen(); allSearchInput.value = ''">
+                            <mat-select-trigger *ngIf="allPlansControl.value.length > 0">
+                                {{changeToArrayFormat(allPlansControl.value)}}
+                            </mat-select-trigger>
+                            <input type="text" #allSearchInput autocomplete="off" matInput
+                                placeholder="Search By All Plans" (input)="onFilterPlans($event,'all-plans')"
+                                (keydown)="$event.stopPropagation();" />
+                            <mat-option *ngFor="let all of filteredAllPlans" [value]="all"
+                                (click)="onAllPlanSelection(all)">
+                                {{all.planName}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <p class="field-text">Select 1 or more plans</p>
+                </div>
+                <div class="clear mb-5" (click)="clear('all-plans')">
+                    <div class="material-icons">clear</div>
+                    <div>Clear Selection</div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-end pr-5">
+                <button mat-stroked-button color="primary" id="add-to-compare" class="compare-btn" type="submit"
+                    [disabled]="addToCompareDisabled">Add to Comparison</button>
+            </div>
+        </form>
+
+        <div id="plans-selection-result">
+            <h4 class="sub-header pt-4">Compare up to {{planCompareCount}} Plans</h4>
+            <ng-container *ngIf="onShowDefault">
+                <div class="d-flex justify-content-center"><img class="image-comparision"
+                        src="./assets/images/plan-comparision.png" alt="plan-comparision">
+                </div>
+                <p class="plan-content">No plans have been added.</p>
+            </ng-container>
+            <ng-container *ngIf="!onShowDefault">
+                <div class="clear px-1 py-4 my-3" (click)="expandAllRows()">
+                    <div [ngClass]="expandAllToggle ? 'expand-all': 'collapse-all'">
+                        <span class="material-icons" style="position: absolute; top:6px">expand_more</span>
+                        <span class="material-icons">expand_more</span>
+                    </div>
+                    <div>{{expandAllToggle ? 'Expand All Rows' : 'Collapse All Rows'}}</div>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" *ngFor="let headerColumn of headerValues; index as i">{{headerColumn}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let data of rowData;">
+                            <tr>
+                                <td>
+                                    <div class="d-flex table-data" (click)="data.showDetail = !data.showDetail; checkExpandAll()">
+                                        <div [ngClass]="{'material-icons':true,'expand-indv': !data.showDetail, 'collapse-indv':data.showDetail}">expand_more</div>
+                                        <div class="pl-5" *ngIf="data.currentPlan.planName"> {{data.currentPlan.planName}}</div>
+                                    </div>
+                                </td>
+                                <td *ngIf="!data.showDetail"> </td>
+                                <td *ngIf="data.showDetail">
+                                    <div class="table-data" *ngFor="let mappedplan of data.mappedPlans">
+                                        {{mappedplan.planName}}</div>
+                                </td>
+                                <td *ngIf="!data.showDetail"> </td>
+                                <td *ngIf="data.showDetail">
+                                    <div class="table-data" *ngFor="let allPlan of data.allPlans">{{allPlan.planName}}
+                                    </div>
+                                </td>
+                                <td class="table-data remove-button" (click)="removeRow(data.currentPlan.planId)">Remove
+                                </td>
+                            </tr>
+                        </ng-container>
+                </table>
+                <div class="export-div">
+                    <button class="export-button" mat-stroked-button (click)="exportAsExcel()">Export</button>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</section>

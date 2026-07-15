@@ -1,0 +1,715 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/dist/css/bootstrap.css';
+@import '../node_modules/@trinet/common/dist/resources/sass/variables.scss';
+@import "./assets/fonts/TrinetIconPack/style.scss";
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import "./assets/fonts/CentraNo2/stylesheet.css";
+
+
+input[type=text]::-ms-clear {  display: none; width : 0; height: 0; }
+
+[class^="col-"] {
+  float: left;
+}
+
+html, body { height: 100%; }
+body {font-family: "Centra No2", Tahoma, Geneva, Verdana, sans-serif; }
+html{
+overflow: scroll !important;
+}
+body {
+  background: $trinet-misty ;
+  margin: 0;
+  padding: 0;
+  height: 100% !important;
+}
+
+.trinet-logo {
+    float: left;
+    width: 100px;
+    height: 37px;
+    margin-top: 15px;
+    background-size: 100%;
+    background-image: url("./assets/images/trinet_logo.svg");
+    background-repeat: no-repeat;
+  }
+  .header {
+    background: $trinet-ink;
+    width: 100%;
+  }
+  .trinet-logo img {
+    width: 100px;
+    padding: 5px;
+    float: left;
+  }
+  .header-container {
+    margin: 0 auto;
+    max-width: 1206px;
+    white-space: nowrap;
+    width: 1206px;
+    height: 65px;
+  }
+  nav, .menu {
+    display: table;
+  }
+  .trinet-logo, .menu {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .menu {
+    float: right;
+  }
+  .menu li {
+    padding: 12px;
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .menu li a {
+    color: $trinet-white;
+    font-family: 'Centra No2', Tahoma, Geneva, Verdana, sans-serif;;
+  }
+.main-page{
+  margin-top: $spacing-xl;
+}
+h4.page-title {
+  padding: 22px 0 8px 0;
+  margin-top: 0;
+  font-size: $heading4-font-size;
+  font-family: 'Centra No2 Bold',  Tahoma, Geneva, Verdana, sans-serif;;
+  color: $trinet-heading;
+}
+.adminappTile{
+  padding: 20px;
+  background-color: $trinet-off-white;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(49, 51, 58, 0.2);
+  display: block;
+  margin: 8px 8px 0px  0;
+  white-space: normal;
+  text-align: center;
+  height: 90px;
+}
+.routingBtn{
+background: transparent;
+border:0;
+font-size: $heading6-font-size;
+font-family: 'Centra No2 Med', Tahoma, Geneva, Verdana, sans-serif;;
+color: $trinet-heading;
+}
+.clear-fix{
+  clear: both;
+}
+.pd5{
+  padding:5px
+}
+.pdl0{
+  padding-left: 0;
+}
+h5{
+  padding: 22px 0 8px 0;
+  margin-top: 0;
+  font-size: 20px;
+  font-family: 'Centra No2 Bold', Tahoma, Geneva, Verdana, sans-serif;;
+  color: $trinet-slate;
+}
+.filtercontainer{
+  padding-left:0;
+  padding-right: 0;
+}
+.titleAccordion, .toggleArrow{
+  font-size: $regular-font-size;
+  color: $color;
+}
+.titleName{
+font-family:'Centra No2 Med', Tahoma, Geneva, Verdana, sans-serif;;
+}
+.titleIcon{
+  padding:0;
+  text-align: right;
+}
+.filterBtn{
+    padding: 10px 20px !important;
+    font-size: 14px;
+    min-width: 150px;
+    margin-top: 18px;
+}
+.radio-group{
+  display: inherit;
+}
+.input-group {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 50%;
+  float: left;
+}
+.input-group label{
+  width:100%;
+}
+.card-body{
+  padding: 10px 5px 10px 7px;
+}
+.tableInput{
+  padding: 5px;
+  border: 0;
+  font-size: 14px;
+  font-family: 'Centra No2', Tahoma, Geneva, Verdana, sans-serif;;
+  width: 100%;
+}
+.disabled{
+    background: 0;
+}
+.editable{
+  background: $trinet-white;
+  border: 1px solid $trinet-blue ;
+  border-radius: 5px;
+}
+.tableIconBtn{
+  background: 0;
+  border: 0;
+  font-size: 16px;
+  margin-top: 2px;
+}
+.btn.btn-add, .btn.btn-reset {
+  background-color: transparent!important;
+  background-image: url('~@trinet/common/dist/resources/images/add-icon.svg');
+  background-position: center left 0;
+  background-repeat: no-repeat;
+  background-size: 22px;
+  border: none;
+  color: $trinet-blue;
+  cursor: pointer;
+  text-decoration: none;
+  padding-left: 25px!important;
+}
+.btn.btn-add:hover, .btn.btn-reset:hover {
+  background-color: transparent!important;
+  background-image: url('~@trinet/common/dist/resources/images/add-icon-hover.svg')!important;
+  background-position: center left 0!important;
+  background-repeat: no-repeat!important;
+  background-size: 22px!important;
+  color: $trinet-azure-blue !important;
+}
+.table thead th{
+  font-size: 14px;
+}
+.columnHeaders{
+  padding: 15px 0;
+  background: transparent;
+border-bottom:1px solid $trinet-heading;
+font-size: $heading6-font-size;
+font-family: "Centra No2 Med", Tahoma, Geneva, Verdana, sans-serif;;
+color: $trinet-heading;
+}
+.columnHeaders > div{
+  text-align: center;
+}
+.template-results {
+  margin-top:10px;
+}
+.template-item {
+  padding: 15px 0;
+  text-align: center;
+  font-size: 14px;
+  background: $trinet-off-white;
+  font-family: "Centra No2", Tahoma, Geneva, Verdana, sans-serif;;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 3px rgba(49, 51, 58, 0.2);
+}
+.templateCollapsiblePanel{
+  padding: 10px 40px;
+  margin-top: 5px;
+}
+.templateCollapseBtn{
+  background: 0;
+  border: 0;
+}
+.planDetails h6, .fundingDetails h6 {
+  padding: 10px 15px;
+  font-family: "Centra No2 Med", Tahoma, Geneva, Verdana, sans-serif;;
+  font-size: 15px;
+  margin: 0;
+  background: $trinet-blue   ;
+  color:$trinet-white;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.planDetails, .fundingDetails {
+  text-align: left;
+}
+.iconText {
+  font-family: 'Centra No2', Tahoma, Geneva, Verdana, sans-serif;;
+  font-size: 14px;
+  margin-left: 5px;
+}
+.templateCollapseBtn{
+  color:$trinet-azure-blue;
+  line-height: 1;
+}
+button:focus{
+  outline:none;
+}
+.pd0{
+  padding: 0;
+}
+.pdl0{
+  padding-left: 0;
+}
+.planTableHeader{
+  padding: 10px 0;
+  border-bottom: 1px solid $trinet-pewter;
+  font-size: 13px;
+  line-height: 1;
+  font-family: "Centra No2 Med", Tahoma, Geneva, Verdana, sans-serif;;
+  color: $trinet-heading;
+  border-left: 1px solid $trinet-pewter;
+  border-right: 1px solid $trinet-pewter;
+  text-transform: capitalize;
+}
+.planTableRow {
+    padding: 12px 0;
+    font-size: 12px;
+    line-height: 1;
+    font-family: "Centra No2", Tahoma, Geneva, Verdana, sans-serif;;
+    color: $trinet-slate;
+    text-transform: capitalize;
+    border-bottom: 1px solid #dadada;
+}
+.planTableData{
+  border: 1px solid $trinet-pewter;
+  border-top: 0;
+  background: #ffffff;
+}
+.spinner {
+  position: relative;
+  height: 45px;
+  width: 45px;
+  vertical-align: middle;
+  background: url('~@trinet/common/dist/resources/images/loading.gif');
+  background-size: 100%;
+  z-index: 100000;
+}
+.noData{
+  padding: 10px 20px;
+  font-size: 12px;
+}
+.copyPreviousYearTemplateContainer {
+  padding: 0 20px;
+  font-size: 16px;
+  color: $trinet-slate ;
+  font-family: 'Centra No2', Tahoma, Geneva, Verdana, sans-serif;;
+}
+.noTemplatesFound {
+  font-size: 24PX;
+  color: #888999;
+  font-family: 'Centra No2 Med', Tahoma, Geneva, Verdana, sans-serif;;
+}
+.realmPlanYearTemplates {
+  padding: 50px;
+  border-radius: 5px;
+  border: 1px solid #dadada;
+  margin-top: 20px;
+}
+.selectRealmNew{
+  margin: 15px 0;
+}
+button.btn.btn-primary.createBtn {
+  padding: 9px 20px !important;
+  font-size: 14px;
+}
+.planTableRow:nth-child(odd){
+background: $trinet-misty;
+}
+.data-funding {
+  padding: 10px 15px;
+  border-bottom: 1px solid #ddd;
+}
+.fund-data {
+  border-right: 1px solid #dadada;
+  padding: 0;
+}
+.fundingDetails .planTableRow{
+  padding:0;
+}
+.plan-coverage-splits {    
+  padding: 10px 0 !important;
+  height: 132px;
+}
+.coverage-split{
+  padding: 8px 15px;
+  text-align: left;
+
+}
+.data-header {
+  font-family: 'Centra No2 Med', Tahoma, Geneva, Verdana, sans-serif;;
+  text-align: right;
+  padding-right: 40px;
+}
+.previous-realm-year{
+  font-family: 'Centra No2 Med', Tahoma, Geneva, Verdana, sans-serif;;
+  margin-top: 8PX;
+}
+
+.searchBox {
+  width: 100%;
+  padding: 7px 34px;
+  border: 1px solid #dadada;
+  border-radius: 50px;
+  font-size: 14px;
+  font-family: "Centra No2", Tahoma, Geneva, Verdana, sans-serif;;
+}
+
+.search .icon-icon_unified_search {
+  position: absolute;
+  top: 15px;
+  left: 28px;
+  font-size: 16px;
+  color: #888;
+}
+
+.search-filter-container {
+  padding: 5px 10px;
+  margin-top: 15px;
+}
+.exceptionTable > .table td{
+    padding: 0.75rem;
+    vertical-align: middle !important;
+    font-size: 12px !important;
+    font-family: "Centra No2 light", Tahoma, Geneva, Verdana, sans-serif !important;
+    text-align: left !important;
+    position: relative;
+}
+.exceptionTable > .table th{
+  padding: 0.75rem;
+  vertical-align: middle !important;
+  font-size: 14px !important;
+  font-family: "Centra No2 Med", Tahoma, Geneva, Verdana, sans-serif !important;
+  text-align: left !important;
+}
+.action-icons{
+  font-size: 16px !important;
+  margin-right: 10px;
+  cursor:pointer;
+}
+.exceptionTable  button.ss-button{
+    font-size: 12px;
+    padding: 5px 7px;
+    border: 0;
+    border-radius: 0;
+    text-transform: capitalize;
+  }
+.newExceptionBlock button.ss-button{
+  font-size: 12px;
+  padding: 5px 10px;
+  border: 1px solid $trinet-misty;
+  border-radius: 0;
+  text-transform: capitalize;
+  }
+.exceptionTable  button.ss-button:disabled, .newExceptionBlock button.ss-button:disabled {
+  color: #212529;
+  border: 0;
+  text-align: left;
+  padding: 5px 2px;
+  border-radius: 0;
+}
+.exceptionTable button.ss-button:disabled > .ss-arrow , .newExceptionBlock button.ss-button:disabled > .ss-arrow{
+  color: #dadada;
+  display: none;
+}
+.exceptionTable ul.ss-list li, .newExceptionBlock ul.ss-list li{
+  padding: 5px 10px !important;
+  font-size: 12px !important;
+  text-align: left;
+  text-transform: capitalize;
+}
+.exceptionTable .exceptionInput{
+  padding: 5px 10px;
+  border: 0;
+  max-width: 100px;
+  text-align: left;
+  font-size: 12px;
+  font-family: "Centra No2 light", sans-serif, Tahoma, Geneva, Verdana;
+}
+.exceptionTable input.exceptionInput:disabled {
+  border: 0;
+  text-align: left;
+  color: #212529;
+  padding: 5px 2px;
+  background: transparent;
+  font-size: 12px;
+  font-family: "Centra No2 light", sans-serif, Tahoma, Geneva, Verdana;
+}
+.actionFilterBtns{
+  margin-top: 25px;
+}
+.exceptionTable .table{
+border:1px solid $trinet-misty;
+}
+.exceptionTable thead{
+  background-color: $trinet-blue ;
+  color: $trinet-off-white;
+  font-family: "Centra No2", Tahoma, Geneva, Verdana, sans-serif;
+}
+.exceptionTable > .table tbody tr:nth-of-type(odd){
+ background-color: $trinet-white !important;
+}
+.exceptionTable > .table tbody tr:nth-of-type(even){
+  background-color: $trinet-misty !important;
+ }
+ .exceptionTable > .table tbody tr:nth-of-type(odd)  button.ss-button, .exceptionTable > .table tbody tr:nth-of-type(odd) .exceptionInput{
+  background-color: $trinet-misty !important;
+ }
+ .exceptionTable > .table tbody tr:nth-of-type(even)  button.ss-button,  .exceptionTable > .table tbody tr:nth-of-type(even) .exceptionInput{
+   background-color: $trinet-white !important;
+  }
+  .exceptionTable > .table tbody tr:nth-of-type(odd)  button.ss-button:disabled, .exceptionTable > .table tbody tr:nth-of-type(even)  button.ss-button:disabled,  .exceptionTable > .table tbody tr:nth-of-type(odd) input.exceptionInput:disabled, .exceptionTable > .table tbody tr:nth-of-type(even) input.exceptionInput:disabled{
+    background-color: transparent !important;
+
+  }
+ .dropdown-menu.show {
+  display: block;
+  width: 100%;
+  font-size: 12px;
+  font-family: "Centra No2", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 0;
+}
+.dropdown-item.active, .dropdown-item:active {
+  color: $trinet-blue;
+  text-decoration: none;
+  background-color: $trinet-misty;
+}
+.no-results{
+  font-size: 24px;
+  font-family: "Centra No2 Bold", Tahoma, Geneva, Verdana, sans-serif;
+  color: $trinet-pewter;
+}
+.newExceptionBlock {
+  border: 1px solid $trinet-misty;
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+.newExceptionBlock input{
+  max-width: 100%;
+  height: 30px;
+}
+.newExceptionBtn {
+  margin-top: 20px;
+  float: right;
+  font-size: 14px;
+  margin-right: 15px;
+}
+button.addNewBtn {
+  float: right;
+  margin-bottom: 5px;
+}
+button.btn.addNewBtn {
+  font-family: 'Centra No2 Med', Tahoma, Geneva, Verdana, sans-serif;
+  color: $trinet-blue;
+  background: transparent;
+  font-size: 14px;
+  cursor: pointer;
+}
+button.btn.addNewBtn:hover {
+  font-family: 'Centra No2 Med', Tahoma, Geneva, Verdana, sans-serif;
+  color: $trinet-azure-blue;
+  background: transparent;
+  font-size: 14px;;
+}
+.addNewBtn span.icon-icon-add-circle{
+margin-right: 5px;
+}
+button.btn.addNewBtn:focus {
+  border: 0;
+  outline: none;
+  box-shadow: none!important;
+}
+.editableCell{
+  background: $trinet-misty ;
+  color: #212529;
+}
+.nonEditableCell{
+  background: transparent;
+  color: #212529;
+}
+.exceptionTable .exceptionInput:focus{
+  border:0;
+  outline:0;
+  box-shadow: 0;
+}
+.newExceptionBlock .exceptionInput{
+  border: 1px solid $trinet-misty;
+  padding: 5px;
+}
+.form-control-feedback ::before, .app-edit-form-control-feedback::before{
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: $trinet-alert-red ;
+  opacity: 1;
+  font-family: "Centra No2", sans-serif, Tahoma, Geneva, Verdana;
+  position: absolute;
+  left: -5px;
+  transform: rotate(45deg);
+  z-index: 100;
+  left: 8px;
+  top: -2px;
+}
+.form-control-feedback,.app-edit-form-control-feedback {
+  position: absolute;
+  padding: 7px;
+  background: $trinet-alert-red ;
+  box-shadow: 0 1px 3px #dadada ;
+  font-size: 12px;
+  font-family: "Centra No2 light", Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 2px;
+  width: 85px;
+  color: $trinet-off-white;
+  z-index: 100;
+}
+.form-control-feedback{
+  top: 50px;
+}
+.form-control-feedback p, .app-edit-form-control-feedback p{
+  color: $trinet-off-white;
+  margin-bottom: 0;
+}
+
+.spinner{
+  position: relative;
+  height: 45px;
+  width: 45px;
+  vertical-align: middle;
+  background: url('~@trinet/common/dist/resources/images/loading.gif');
+  background-size: 100%;
+  z-index: 100000;
+}
+button.btn.btn-secondary.white.alert-btn {
+  float: right;
+}
+.scrollTop{
+  position: fixed;
+  padding: 0px 10px;
+  font-size: 42px;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 9999;
+}
+th{
+  cursor: pointer;
+}
+th.asc:after {
+  content: "\e900";
+  display: block;
+  font-family: "icomoon", Tahoma, Geneva, Verdana, sans-serif !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1.5;
+  font-size: 12px;
+  float: right;
+  margin-right: 12px;
+}
+th.desc:after {
+  content: "\e901";
+  display: block;
+  font-family: "icomoon", Tahoma, Geneva, Verdana, sans-serif !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1.5;
+  font-size: 12px;
+  float: right;
+  margin-right: 12px;
+}
+.maskSpinner{
+  position: absolute;
+  background: rgba(255,255,255, 0.75);
+  z-index: 2;
+}
+input#newExceptionCompanyCode {
+  text-transform: uppercase;
+}
+.exceptionTable{
+  min-height: 100px;
+}
+.dialog-message-icon{
+  font-size: 3rem !important;
+}
+.dialog-message-text{
+font-size: 14px !important;
+}
+.newExceptionBlock  .mat-datepicker-toggle.mat-datepicker-toggle {
+  position: absolute;
+  top: 13px;
+  right: 20px;
+}
+.exceptionTable .mat-datepicker-toggle.mat-datepicker-toggle{
+  position: absolute;
+  top: -1px;
+  right: 13px;
+}
+.newExceptionBlock  .mat-datepicker-toggle-default-icon, .exceptionTable .mat-datepicker-toggle-default-icon {
+  width: 15px !important;
+  height: 15px !important;
+}
+
+//calendar styling
+.mat-datepicker-content .mat-calendar{
+  width:200px !important;
+  height:230px !important;
+}
+.mat-calendar-header {
+  padding: 0 !important;
+}
+.mat-calendar-controls {
+  display: flex;
+  margin: 5px  !important;
+}
+.mat-calendar-next-button::after, .mat-calendar-previous-button::after{
+  margin:12px !important;
+}
+.mat-calendar-controls .mat-icon-button{
+  width: 30px !important;
+  height: 30px !important;
+}
+button.mat-calendar-period-button {
+  padding: 0PX 5PX;
+  font-size: 12px;
+}
+// td.mat-calendar-body-label{
+//   display:none;
+// }
+.mat-calendar-content{
+  padding:0 5px 10px 5px !important;
+}
+.mat-calendar-table-header-divider{
+  display: none;
+}
+.mat-calendar-table-header {
+  background: $trinet-blue;
+  color: $trinet-off-white;
+  padding: 5px 0;
+  line-height: 2;
+}
+.mat-calendar-table-header th{
+  padding:0 !important;
+}
+.mat-calendar-body-selected{
+  background: $trinet-orange;
+}
+.mat-calendar-body {
+  min-width: 180px !important;
+  font-size: 12px !important;
+}
+ul.ss-list{
+margin:0;
+max-height: 140px;
+overflow-y: scroll;
+}
+.save_disabled{
+  color: $trinet-misty;
+}

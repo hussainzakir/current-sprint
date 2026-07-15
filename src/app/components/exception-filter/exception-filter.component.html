@@ -1,0 +1,35 @@
+<div class="gs-card content">
+	<div class="clear-fix"></div>
+	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 pd0">
+		<div class="col-md-3 col-lg-3 col-xs-12 col-sm-12 pdl0">
+			<label>Exchange</label>
+			<app-combobox [data]="exchanges" (valueEmittor)="handleExchangeValue($event)"
+				[valueAttribute]="exchangeAttribute" [initialSelected]="false" [cleared]="setClear" tabindex="1" [comboType]="'ogCombo'">
+			</app-combobox>
+		</div>
+		<div class="col-md-3 col-lg-3 col-xs-12 col-sm-12 pdl0">
+			<label>Quarter</label>
+			<app-combobox [data]="quarterEntries" (valueEmittor)="handleQuarterValue($event, false)"
+				[valueAttribute]="quarterAttribute"  [initialSelected]="initialselectedQuarterFlag" [cleared]="setClear" tabindex="2" [defaultValue]="" [comboType]="'ogCombo'">
+			</app-combobox>
+		</div>
+		<div class="col-md-3 col-lg-3 col-xs-12 col-sm-12 pdl0">
+			<div class="col-md-3 col-xs-3 col-sm-3 col-lg-3 actionFilterBtns"><button
+					class="btn btn-secondary btn-small" (click)="onClearClick()" tabindex="3">clear</button></div>
+			<div class="col-md-9 col-xs-9 col-sm-9 col-lg-9"></div>
+			<div class="clear-fix"></div>
+		</div>
+		<div class="col-md-3 col-xs-12 col-sm-12 col-lg-3 search-filter-container">
+			<div class="search">
+				<span class="icon-icon_unified_search"></span>
+				<div>
+					<input type="text" class="searchBox" placeholder="Search Company Code" id="typeahead-basic"
+						[(ngModel)]="selectedCompany" (ngModelChange)="onCompanyChange($event)"
+						[ngbTypeahead]="searchCompany" [resultFormatter]="companyFormatter"
+						[inputFormatter]="companyFormatter" (selectItem)="onSelectCompany($event)" tabindex="4" />
+				</div>
+			</div>
+		</div>
+		<div class="clear-fix"></div>
+	</div>
+	<div class="clear-fix"></div>

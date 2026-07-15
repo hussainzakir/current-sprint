@@ -1,0 +1,154 @@
+<h4 class="page-title">{{ pageTitle }}</h4>
+
+<tn-common-alert-banner
+  *ngIf="bannerMessage.bannerMessageShow"
+  [type]="bannerMessage.bannerMessageType"
+  class="page-banner"
+  [position]="'top'"
+  [message]="bannerMessage.bannerMessageText"
+  [button1]="'Dismiss'"
+  (click)="bannerMessage.bannerMessageShow = !bannerMessage.bannerMessageShow"
+>
+</tn-common-alert-banner>
+<app-exception-filter
+  [exceptionsData]="exceptionsData"
+  (selectedQuarterCodeEmittor)="handleSelectedQuarterChange($event)"
+  (selectedExchangeCodeEmittor)="handleSelectedExchangeChange($event)"
+  (selectedCompanyCodeEmittor)="handleSelectedCompanyChange($event)"
+  [clearFlag]="clearFlag"
+></app-exception-filter>
+<ng-template #noResults>
+  <div class="no-results" [hidden]="spinnerShow">No Results found</div>
+</ng-template>
+<div class="gs-card content">
+  <app-new-exception
+    [approvers]="approvers"
+    [exceptions]="exceptionsData"
+    (newExceptionEmittor)="addNewException($event)"
+    (bannerMsgEmittor)="handleNewExceptionBanner($event)"
+    [deselectionException]="true"
+  ></app-new-exception>
+
+  <div class="exceptionTable" #exceptionsTable>
+    <div
+      class="maskSpinner"
+      [style.width.px]="exceptionsTable.offsetWidth"
+      [style.height.px]="exceptionsTable.offsetHeight"
+      [hidden]="!spinnerShow"
+    >
+      <div class="spinner"></div>
+    </div>
+    <table
+      class="table"
+      *ngIf="
+        (exceptionsData | filterBy: filterExchangeValue:selectedQuarter:selectedCompanyCode) &&
+          (exceptionsData | filterBy: filterExchangeValue:selectedQuarter:selectedCompanyCode)
+            .length > 0;
+        else noResults
+      "
+    >
+      <thead>
+        <tr>
+          <th
+            sortable="{{ headerColumn }}"
+            (sort)="onSort($event)"
+            scope="col"
+            *ngFor="let headerColumn of headerValues; index as i"
+          >
+            {{ headerColumn }}
+          </th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let exception of exceptionsData
+              | filterBy: filterExchangeValue:selectedQuarter:selectedCompanyCode;
+            index as j
+          "
+        >
+          <td>{{ exception.companyCode }}</td>
+          <td>{{ exception.companyName }}</td>
+          <td>
+            <input
+              class="exceptionInput"
+              [min]="minDate"
+              [matDatepicker]="startDate"
+              [value]="exception.startDate"
+              placeholder="MM/DD/YYYY"
+              (dateInput)="getStartDate($event, exception.id)"
+              (dateChange)="getStartDate($event, exception.id, j)"
+              class="form-control exceptionInput"
+              [id]="'exceptionStartDate' + j"
+              [name]="'startDate' + j"
+              title="Enter a date in this format MM/DD/YYYY"
+              required
+              disabled
+            />
+            <mat-datepicker-toggle matSuffix [for]="startDate"> </mat-datepicker-toggle>
+            <mat-datepicker #startDate [disabled]="rowEditableList[j].editable"></mat-datepicker>
+          </td>
+          <td>
+            <input
+              class="exceptionInput"
+              [matDatepicker]="endDate"
+              [value]="exception.endDate"
+              (dateInput)="getEndDate($event, exception.id)"
+              (dateChange)="getEndDate($event, exception.id, j)"
+              placeholder="MM/DD/YYYY"
+              title="Enter a date in this format MM/DD/YYYY"
+              [id]="'exceptionEndDate' + j"
+              [name]="'endDate' + j"
+              required
+              disabled
+            />
+            <mat-datepicker-toggle matSuffix [for]="endDate"> </mat-datepicker-toggle>
+            <mat-datepicker #endDate [disabled]="rowEditableList[j].editable"></mat-datepicker>
+          </td>
+          <td>
+            <app-combobox
+              [data]="approvers"
+              (valueEmittor)="handleApproverChange($event, exception.id, j)"
+              [valueAttribute]=""
+              [disableComboBox]="rowEditableList[j].editable"
+              [initialSelected]="true"
+              [defaultValue]="exception.approverName"
+              [comboType]="'attrCombo'"
+            ></app-combobox>
+          </td>
+
+          <td>{{ exception.createTime | date: 'medium' }}</td>
+          <td>
+            <span
+              [class]="
+                rowEditableList[j].editable
+                  ? 'action-icons icon-icon_Edit'
+                  : 'action-icons icon-icon_refresh'
+              "
+              (click)="onEditClick(j, exception.id)"
+            ></span
+            ><span
+              *ngIf="!rowEditableList[j].editable"
+              [class]="
+                rowEditableList[j].saveButtonEditable
+                  ? 'action-icons icon-icon_save'
+                  : 'action-icons icon-icon_save save_disabled'
+              "
+              (click)="
+                rowEditableList[j].saveButtonEditable ? onUpdate(j, exception.id) : 'clickAborted'
+              "
+            ></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div [hidden]="!fixed" class="scrollTop" (click)="scrollTop()">
+  <span
+    [class]="scrollTopHover ? 'icon-icon_backtotop_hover' : 'icon-icon_backtotop'"
+    (mouseover)="scrollTopHover = true"
+    (mouseleave)="scrollTopHover = false"
+  ></span>
+</div>

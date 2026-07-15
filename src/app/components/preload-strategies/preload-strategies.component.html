@@ -1,0 +1,78 @@
+<h4 class="page-title">{{pageTitle}}</h4>
+<tn-common-alert-banner *ngIf="bannerMessage.bannerMessageShow"
+[type]="bannerMessage.bannerMessageType"
+class="page-banner"
+[position]="'top'"
+[message]="bannerMessage.bannerMessageText"
+[button1]="'Dismiss'"
+(click)="bannerMessage.bannerMessageShow=!bannerMessage.bannerMessageShow">
+</tn-common-alert-banner>
+
+<ng-template #noResults>
+  <div class="no-results" [hidden]="spinnerShow">{{preloadStrategiesLabel.noResultsfound}}</div>
+</ng-template>
+<div class="gs-card content">
+  <div class="row">
+    <div class="col-md-6 col-xs-12 col-sm-12 col-lg-3 pdl0">
+      <label>{{preloadStrategiesLabel.selectPreloadType}}</label>
+      <app-combobox [data]="preloadOpstions" [valueAttribute]="" [initialSelected]="false"
+        (valueEmittor)="handlePreloadOption($event)" [comboType]="'attrCombo'">
+      </app-combobox>
+    </div>
+
+
+    <div *ngIf='selected==1' class="col-md-6 col-xs-12 col-sm-12 col-lg-3 pdl0">
+      <label>{{preloadStrategiesLabel.selectQuarter}}</label>
+      <app-combobox [data]="preloadPlanYearOption" [initialSelected]="false"  (valueEmittor)="handleQuaterSelection($event)"
+      [comboType]="'attrCombo'"></app-combobox>
+
+    </div>
+    <div *ngIf='selected==2' class="col-md-6 col-xs-12 col-sm-12 col-lg-6 pdl0">
+      <label>{{preloadStrategiesLabel.companyCode}}</label>
+      <input type="text" class="form-control" [(ngModel)]="companyCode" id="exampleInputEmail1" aria-describedby="emailHelp"
+        placeholder="001 , 002 ">
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-xs-12 col-sm-12 col-lg-12 pdl0 ">
+      <span style="float: right;">
+        <button mat-stroked-button color="accent" (click)="preloadStrategies()">{{preloadStrategiesLabel.preload}}</button>
+        <button mat-stroked-button color="primary" (click)='refreshStatus()'>{{preloadStrategiesLabel.refresh}}</button>
+      </span>
+    </div>
+  </div>
+
+  </div>
+  <div class="gs-card content">
+    <div class="exceptionTable" #exceptionsTable>
+      <div class="maskSpinner" [style.width.px]="exceptionsTable.offsetWidth"
+        [style.height.px]="exceptionsTable.offsetHeight" [hidden]="!spinnerShow">
+        <div class="spinner"></div>
+      </div>
+      <table class="table">
+
+        <thead>
+          <tr>
+            <th sortable="{{headerColumn}}" (sort)="onSort($event)" scope="col"
+              *ngFor="let headerColumn of headerValues; index as i">{{headerColumn}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let processStatus of processStatusData  ; index as j">
+            <td>{{ processStatus.type }}</td>
+            <td>{{ processStatus. value}}</td>
+            <td>{{ processStatus.status }}</td>
+            <td>{{ processStatus.preloadDate }}</td>
+            <td>{{ processStatus.userId }}</td>
+
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div [hidden]='!fixed' class="scrollTop" (click)="scrollTop()"><span
+		[class]="scrollTopHover?'icon-icon_backtotop_hover': 'icon-icon_backtotop'" (mouseover)="scrollTopHover = true"
+		(mouseleave)="scrollTopHover = false"></span></div>
+    

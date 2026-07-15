@@ -1,0 +1,91 @@
+<h4 class="page-title">{{pageTitle}}</h4>
+
+<tn-common-alert-banner *ngIf="bannerMessage.bannerMessageShow" [type]="bannerMessage.bannerMessageType"
+	class="page-banner" [position]="'top'" [message]="bannerMessage.bannerMessageText" [button1]="'Dismiss'"
+	(click)="bannerMessage.bannerMessageShow=!bannerMessage.bannerMessageShow">
+</tn-common-alert-banner>
+
+ 
+<ng-template #noResults>
+	<div class="no-results" [hidden]="spinnerShow">No Results found</div>
+</ng-template>
+<app-exception-filter [exceptionsData]="hqOverrideAttributes"
+	(selectedQuarterCodeEmittor)="handleSelectedQuarterChange($event)"
+	(selectedExchangeCodeEmittor)="handleSelectedExchangeChange($event)"
+	(selectedCompanyCodeEmittor)="handleSelectedCompanyChange($event)" [clearFlag]="clearFlag"></app-exception-filter>
+
+<div class="gs-card content">
+
+	<app-new-company-hq-overrides [hqOverrideData]='hqOverrideAttributes'
+		(newExceptionEmittor)="addNewException($event)" (bannerMsgEmittor)="handleNewExceptionBanner($event)">
+	</app-new-company-hq-overrides>
+
+	<div class="exceptionTable" #exceptionsTable>
+
+		<table class="table"   *ngIf="hqOverrideAttributes ">
+
+			<thead>
+				<tr>
+					<th  sortable="{{headerColumn}}" (sort)="onSort($event)"  scope="col"
+						*ngFor="let headerColumn of headerValues; index as i">{{headerColumn}}</th>
+					<th scope="col">{{newOverrideLabel.actions}}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr
+					*ngFor="let exception of hqOverrideAttributes index as j">
+					<td>{{ exception.companyCode }}</td>
+					<td>{{ exception.companyName }}</td>
+					<td>{{exception.termDate}}</td>
+					<td>{{ exception.oeQuarter }}</td>
+					<td>{{ exception.planYearStart }} - {{ exception.planYearEnd }} </td>
+					<td>{{ exception.state }}</td>
+					<td>{{ exception.zip }}</td>
+					<td *ngIf='rowEditableList[j].editable '>{{ exception.overrideHqState }}</td>
+					<td *ngIf='!rowEditableList[j].editable '>
+						<app-combobox [data]="overideStates" [initialSelected]="false"
+							(valueEmittor)="handleStateData($event,j)" [cleared]="setClear" tabindex="2"
+							[defaultValue]="" [comboType]="'ogCombo'">
+						</app-combobox>
+					</td>
+
+
+					<td>
+						<input type="text" [(ngModel)]="exception.overrideHqZip"
+							[disabled]="rowEditableList[j].editable " [placeholder]="'0 - ' " class="exceptionInput"
+							[id]="'overrideHqZip'+ j" [name]="'overrideHqZip'+ j"
+							[title]="'Enter a value between 0 and  9' " required #overrideHqZip="ngModel"
+							[customMin]="0" min="0" oninput="validity.valid||(value='');"
+							(ngModelChange)="handlezipValueChange($event,exception,j)">
+						<div class="app-edit-form-control-feedback"
+							*ngIf="overrideHqZip.errors && (overrideHqZip.dirty || overrideHqZip.touched)">
+							<p *ngIf="overrideHqZip.errors.required">Value is required</p>
+							<p *ngIf="overrideHqZip.errors.customMin">{{newOverrideLabel.valueLessThan}} 0</p>
+							<p *ngIf="overrideHqZip.errors.customMax">{{newOverrideLabel.valueGreaterThan}}
+								{{getMaxLimitFundValue(exception.minFundType)}}</p>
+						</div>
+					</td>
+
+					<td><span *ngIf="rowEditableList[j].editable && exception.canEdit" data-toggle="tooltip" data-placement="top" title="Edit"  class="action-icons icon-icon_Edit"
+							(click)="onEditClick(j,exception)"></span>
+							<span *ngIf="!rowEditableList[j].editable && exception.canEdit" data-toggle="tooltip" data-placement="top" title="Refresh" class="action-icons icon-icon_refresh"
+							(click)="onEditClick(j,exception)"></span>
+						<span data-toggle="tooltip" data-placement="top" title="Save"*ngIf="!rowEditableList[j].editable"
+						[class]="rowEditableList[j].saveButtonEditable?'action-icons icon-icon_save':'action-icons icon-icon_save save_disabled'"
+						 (click)="onUpdate(exception,j)"></span>
+
+						<span *ngIf="exception.canDelete"  (click)="handleDeleteClick(j,exception)" data-toggle="tooltip" data-placement="top" title="Delete" class="action-icons icon-icon_trash"
+							></span>
+
+						<span *ngIf="exception.canCopy" data-toggle="tooltip" data-placement="top" title="Clone Forward {{exception.nextYearPlanYearStart}} - {{exception.nextYearPlanYearEnd}}" 
+							class="action-icons icon-icon_file"
+							(click)="onClone(exception,j)"></span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div [hidden]='!fixed' class="scrollTop" (click)="scrollTop()"><span
+		[class]="scrollTopHover?'icon-icon_backtotop_hover': 'icon-icon_backtotop'" (mouseover)="scrollTopHover = true"
+		(mouseleave)="scrollTopHover = false"></span></div>

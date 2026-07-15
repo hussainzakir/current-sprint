@@ -1,0 +1,19 @@
+<div >
+<button class="ss-button" (click)="toggleComboList()" #comboBox [disabled]= "disableComboBox?'disabled': ''">
+     <span *ngIf="initialSelected;else initialNotSelected">
+         <span *ngIf="defaultValue && defaultValue!==null && !itemSelected; else notDefaultValue">{{defaultValue}}</span> 
+         <ng-template #notDefaultValue><span *ngIf="combotype === 'ogCombo' && (items && items.length>0)"> {{itemSelected?dropdownLabel:items[0]}}</span><span *ngIf="combotype === 'attrCombo' && (items && items.length>0)"> {{itemSelected?dropdownLabel:items[0].name}}</span></ng-template>
+         
+     </span>
+     <ng-template #initialNotSelected><span>select {{valueAttr}}</span></ng-template>
+    <span [class]="!showList?'ss-arrow icon-icon_report_down':'ss-arrow icon-icon_report_up'"></span> 
+    <div class="clear-fix"></div>
+</button>   
+
+<ul *ngIf="showList && combotype === 'attrCombo'"  class="ss-list" [style.width.px]="comboBox.offsetWidth">
+     <li *ngFor="let item of items" (click)="sendAttrValue(item)">{{ item.name }}</li></ul>
+<ul *ngIf="showList && combotype === 'ogCombo'"  class="ss-list" [style.width.px]="comboBox.offsetWidth">
+<li *ngFor="let item of items" (click)="sendOGValue(item)">{{ item }}</li></ul>
+</div>
+
+

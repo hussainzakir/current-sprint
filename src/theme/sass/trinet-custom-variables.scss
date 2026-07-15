@@ -1,0 +1,249 @@
+/**
+ * START: file _sass/trinet-custom-variables.scss
+ *
+ * this file holds our TriNet variables to be included elsewhere.
+ *
+ * @author Gary Tessler, P.E.
+*/
+
+.startfile_sass_trinet_custom_variables_scss {
+  display: none;
+}
+
+$font-path: '../fonts' !default;
+
+// core colors start
+
+$trinet-blue: #0077BC;
+$trinet-azure-blue: #19a5f0;
+$trinet-light-blue: #d8eaf5;
+
+$trinet-orange: #f47b27;
+$trinet-lighter-orange: #f69855;    // gst created
+
+
+$trinet-red-darker: #e61b36;
+$trinet-red: #f32b46;
+$trinet-red-lighter: #ff4f66;
+
+$trinet-yellow-darker: #a16c03;
+$trinet-yellow: #ae7400;
+$trinet-yellow-lighter: #cc9320;
+
+$trinet-green-darker: #108740;
+$trinet-green: #1d914b;
+$trinet-green-lighter: #23b35d;
+
+$trinet-cyan-lighter: #33cee6;   // gst created
+
+$trinet-ink: #242936;
+$trinet-slate: #444c5c;
+$trinet-pewter: #6e778a;
+$trinet-silver: #b3bdc7;
+$trinet-cloudy: #dde1e6;
+$trinet-misty: #eef0f2;
+$trinet-off-white: #f8f9fa;
+$trinet-progress-bg: #3E4351;
+
+$trinet-standard-font: $trinet-ink;
+$trinet-light-font: $trinet-pewter; // #546A79 !default;
+
+$trinet-alert-info-begin: #497199;
+$trinet-alert-info-end: #3d5e7f;
+
+
+// chart legend gradients
+$trinet-chart-gradient-green: linear-gradient(to bottom, #80dc72, #42b86d);
+$trinet-chart-gradient-sky: linear-gradient(to bottom, #5ccfe6, #3e9ede);
+$trinet-chart-gradient-orange: linear-gradient(to bottom, #ff9a42, #f5633a);
+$trinet-chart-gradient-marine: linear-gradient(to bottom, #3a96b8, #1c528f);
+$trinet-chart-gradient-burgundy: linear-gradient(to bottom, #d15c6c, #942c57);
+
+// bar gradients
+$trinet-bar-gradient-green: linear-gradient(to left, #80dc72, #42b86d);
+$trinet-bar-gradient-sky: linear-gradient(to left, #5ccfe6, #3e9ede);
+$trinet-bar-gradient-orange: linear-gradient(to left, #ff9a42, #f5633a);
+$trinet-bar-gradient-marine: linear-gradient(to left, #3a96b8, #1c528f);
+$trinet-bar-gradient-burgundy: linear-gradient(to left, #d15c6c, #942c57);
+
+// Alert Colors
+$trinet-alert-green  : linear-gradient(to right, $trinet-green, $trinet-green-darker);
+$trinet-alert-yellow : linear-gradient(to right, $trinet-yellow-lighter, $trinet-yellow);
+$trinet-alert-red    : linear-gradient(to right, $trinet-red, $trinet-red-darker);
+$trinet-alert-blue   : linear-gradient(to right,$trinet-alert-info-begin,$trinet-alert-info-end);
+$trinet-alert-gray   : linear-gradient(to right, $trinet-slate, $trinet-ink);
+
+
+// core colors end
+
+$trinet-disabled: #c6cddc;
+$trinet-brand-blue: $trinet-blue;
+
+$trinet-brand-primary: $trinet-brand-blue;
+$trinet-brand-secondary: $trinet-orange;
+$trinet-brand-warning: $trinet-yellow-lighter;
+
+// Modal: Bigger size for X close sign ~ by Deledda
+$trinet-x-size-big: 30px;
+
+.bg-dark {
+  background-color: $trinet-ink !important;
+}
+
+.bg-primary {
+  background-color: $trinet-brand-primary !important;
+}
+
+
+//------------------------------------------------------------------------------------------------
+// note:  As Bootstrap evolves, you will have to update the below with the latest from: _sass/bootstrap4-src/_variables.scss
+//        do not forget to remove !default from the elements that you import.
+//------------------------------------------------------------------------------------------------
+
+//
+// Color system
+//
+
+$white:     #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #868e96;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black:  #000;
+
+$grays: (
+        100: $gray-100,
+        200: $gray-200,
+        300: $gray-300,
+        400: $gray-400,
+        500: $gray-500,
+        600: $gray-600,
+        700: $gray-700,
+        800: $gray-800,
+        900: $gray-900
+);
+
+$blue:    $trinet-brand-blue;
+$indigo:  #6610f2;
+$purple:  #6f42c1;
+$pink:    #e83e8c;
+$red:     #dc3545;
+$orange:  $trinet-orange;
+$yellow:  $trinet-yellow-lighter;
+$green:   #28a745;
+$teal:    #20c997;
+$cyan:    #17a2b8;
+
+$colors: (
+        blue: $blue,
+        indigo: $indigo,
+        purple: $purple,
+        pink: $pink,
+        red: $red,
+        orange: $orange,
+        yellow: $yellow,
+        green: $green,
+        teal: $teal,
+        cyan: $cyan,
+        white: $white,
+        gray: $gray-600,
+        gray-dark: $gray-800
+);
+
+$theme-colors: (
+        primary: $orange,
+        secondary: $trinet-blue,
+        success: $green,
+        info: $cyan,
+        warning: $yellow,
+        danger: $red,
+        light: $gray-100,
+        dark: $gray-800
+);
+
+
+// start greenstack adds
+
+$trinet-header-bg    : rgb(248, 249, 250);
+
+// app elements
+// Use these within apps to set colors for actions and elements.  They all map to a GS color above.
+$trinet-heading      : $trinet-slate; // #33434e !default;
+$trinet-standard-font: $trinet-ink; // #546A79 !default;
+$trinet-light-font   : $trinet-pewter; // #546A79 !default;
+$trinet-label-font   : $trinet-slate; // #A0A8BA !default;
+$trinet-background   : $trinet-misty;
+$trinet-link-blue    : $trinet-azure-blue; // secondary color
+// $trinet-pending-action  : $trinet-yellow-orange;
+
+
+// font weights
+$regular-font-weight  : normal;
+$semibold-font-weight : 600;
+$light-font-weight    : lighter;
+
+$font-size              : 14px !default;
+$font-size-rem          : 1.4rem !default;
+
+$font-family            : 'Centra No2 Med' !default;
+$regular-font-family    : 'Centra No2' !default;
+$icon-font-family       : 'icomoon' !default;
+
+// Different font sizes
+// pixels
+$smallest-font-size     : 10px;
+$smaller-font-size      : 11px;
+$small-font-size        : 12px;
+$body-font-size         : 13px;
+$regular-font-size      : $font-size;
+$medium-font-size       : 16px;
+$heading6-font-size     : 18px;
+$alert-icon-font-size   : 20px;
+$heading5-font-size     : 20px;
+$heading4-font-size     : 24px;
+$heading3-font-size     : 32px;
+$heading2-font-size     : 48px;
+$heading1-font-size     : 60px;
+$small-icon-font-size   : 40px;
+$medium-icon-font-size  : 50px;
+$large-icon-font-size   : 60px;
+
+
+//rems
+$smallest-font-size-rem     : 1.0rem;
+$smaller-font-size-rem      : 1.1rem;
+$small-font-size-rem        : 1.2rem;
+$body-font-size-rem         : 1.3rem;
+$regular-font-size-rem      : $font-size-rem;
+$medium-font-size-rem       : 1.6rem;
+$heading6-font-size-rem     : 1.8rem;
+$alert-icon-font-size-rem   : 2.0rem;
+$heading5-font-size-rem     : 2.0rem;
+$heading4-font-size-rem     : 2.4rem;
+$heading3-font-size-rem     : 3.2rem;
+$heading2-font-size-rem     : 4.8rem;
+$heading1-font-size-rem     : 6.0rem;
+$small-icon-font-size-rem   : 4.0rem;
+$medium-icon-font-size-rem  : 5.0rem;
+$large-icon-font-size-rem   : 6.0rem;
+
+$disabled-color : $trinet-silver !default;
+
+
+// end greenstack adds
+
+
+//------------------------------------------------------------------------------------------------
+// DO NOT ADD TRINET custom stuff here. instead, add it near the top of the file
+//------------------------------------------------------------------------------------------------
+
+.endfile_sass_trinet_custom_variables_scss {
+  display: none;
+}
+
+/* END: file _sass/trinet-custom-variables.scss */

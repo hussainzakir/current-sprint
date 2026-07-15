@@ -1,0 +1,82 @@
+<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 pd0">
+    <button type="button" class="btn addNewBtn" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+        aria-controls="collapseExample">
+        <span class="icon-icon-add-circle"></span> {{newOverrideLabel.addNewOverride}}
+    </button>
+
+</div>
+<div class="clear-fix"></div>
+<div id="newHqOverrideBlockCollapse" [ngbCollapse]="!isCollapsed">
+
+    <div class="newExceptionBlock" *ngIf="isCollapsed">
+        <div class="spinner" [hidden]="!spinnerShow"></div>
+        <div [hidden]="spinnerShow">
+            <div class="clear-fix"></div>
+
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 pd0">
+
+                <div class="col-md-1 col-xs-12 col-sm-12 col-lg-1 pdl0">
+                    <label>{{newOverrideLabel.companyCode}}</label>
+                    <input type="text" [(ngModel)]="newHqOverride.companyCode" (focusout)="getCompany()"
+                        class="form-control exceptionInput" id="newHqOverrideCompanyCode" required name="companyCode"
+                        #companyCode="ngModel"  >
+                        <div class="form-control-feedback" [hidden]="(companyCode.valid || companyCode.pristine)">
+                            <p>{{newOverrideLabel.companyCode}} {{newOverrideLabel.required}}</p>
+                        </div>
+                        <div class="form-control-feedback" *ngIf='!isCompanyValid'>
+                            <p  >{{newOverrideLabel.companyCode}} {{newOverrideLabel.required}}</p>
+                        </div>
+                </div>
+                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2 pdl0">
+                    <label>{{newOverrideLabel.companyName}}</label>
+                    <input type="text" [(ngModel)]="newHqOverride.companyName" class="form-control exceptionInput"
+                        id="newHqOverrideCompanyName" name="companyName" required #companyName="ngModel" disabled>
+                     
+                </div>
+
+                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2 pdl0">
+                    <label>{{newOverrideLabel.qeQuarter}} </label>
+                    <input type="text" [(ngModel)]="newHqOverride.oeQuarter" class="form-control exceptionInput"
+                        id="newHqOverrideoeQuarter" name="oeQuarter" required #companyName="ngModel" disabled>
+                </div>
+                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2 pdl0">
+                    <label>{{newOverrideLabel.planYear}}</label>
+                    <app-combobox [data]="planTypes" [initialSelected]="false" [valueAttribute]="valueAttr"
+                        (valueEmittor)="handlePlanTypeValue($event, false)" [cleared]="setClear" tabindex="2"
+                        [defaultValue]="" [comboType]="'attrCombo'">
+                    </app-combobox>
+                </div>
+                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-1 pdl0">
+                    <label>{{newOverrideLabel.companyHQ}}</label>
+                    <input type="text" [(ngModel)]="newHqOverride.state" class="form-control exceptionInput" id="state"
+                        name="state" required #companyName="ngModel" disabled>
+                </div>
+                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-1 pdl0">
+                    <label>{{newOverrideLabel.zip}} </label>
+                    <input type="text" [(ngModel)]="newHqOverride.zip" class="form-control exceptionInput" id="zip"
+                        name="zip" required  disabled>
+                </div>
+                <div class="col-md-2 col-xs-12 col-sm-12 col-lg-1 pdl0">
+                    <label>{{newOverrideLabel.overrideHQ}} </label>
+                    <app-combobox [data]="overideStates" [initialSelected]="false"
+                        (valueEmittor)="handleStateData($event)" [cleared]="setClear" tabindex="2" [defaultValue]=""
+                        [comboType]="'ogCombo'">
+                    </app-combobox>
+                </div>
+                <div class="col-md-1 col-xs-12 col-sm-12 col-lg-2 pdl0">
+                    <label>{{newOverrideLabel.overrideZip}}</label>
+                    <input type="text" [(ngModel)]="newHqOverride.overrideHqZip" class="form-control exceptionInput"
+                        id="newHqOverrideoeQuarter" name="oeQuarter" (focusout)="validateButton()" required  >
+                </div>
+                <div class="clear-fix"></div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 pd0">
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 pd0">
+                    <button class="btn btn-primary  newExceptionBtn " [disabled]="!createButtonDisable"
+                        (click)="onCreate()">{{newOverrideLabel.createOverride}}</button>
+                </div>
+            </div>
+            <div class="clear-fix"></div>
+        </div>
+    </div>
+</div>

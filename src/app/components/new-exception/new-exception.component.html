@@ -1,0 +1,162 @@
+<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 pd0">
+  <button
+    type="button"
+    class="btn addNewBtn"
+    (click)="isCollapsed = !isCollapsed"
+    [attr.aria-expanded]="!isCollapsed"
+    aria-controls="collapseExample"
+  >
+    <span class="icon-icon-add-circle"></span>Add New Exception
+  </button>
+</div>
+<div class="clear-fix"></div>
+<div id="newExceptionBlockCollapse" [ngbCollapse]="!isCollapsed">
+  <div class="newExceptionBlock" *ngIf="isCollapsed">
+    <div class="spinner" [hidden]="!spinnerShow"></div>
+    <div [hidden]="spinnerShow">
+      <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 pd0">
+        <div class="col-md-1 col-xs-12 col-sm-12 col-lg-1 pdl0">
+          <label>Company Code</label>
+          <input
+            type="text"
+            [(ngModel)]="newException.companyCode"
+            (focusout)="getCompany()"
+            class="form-control exceptionInput"
+            id="newExceptionCompanyCode"
+            required
+            name="companyCode"
+            #companyCode="ngModel"
+          />
+          <div class="form-control-feedback" [hidden]="companyCode.valid || companyCode.pristine">
+            <p>Company Code is required</p>
+          </div>
+        </div>
+        <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2 pdl0">
+          <label>Company Name</label>
+          <input
+            type="text"
+            [(ngModel)]="newException.companyName"
+            class="form-control exceptionInput"
+            id="newExceptionCompanyName"
+            name="companyName"
+            required
+            #companyName="ngModel"
+            disabled
+          />
+          <div class="form-control-feedback" [hidden]="companyName.valid || companyName.pristine">
+            <p>Company Name is required</p>
+          </div>
+        </div>
+        <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2 pdl0">
+          <label>Start Date</label>
+          <input
+            class="exceptionInput"
+            [matDatepicker]="startDate"
+            [min]="deselectionException ? minDate : ''"
+            [(ngModel)]="newException.startDate"
+            (ngModelChange)="getStartDate()"
+            class="form-control exceptionInput"
+            id="newExceptionStartDate"
+            name="startDate"
+            placeholder="MM/DD/YYYY"
+            title="Enter a date in this format MM/DD/YYYY"
+            required
+            disabled
+          />
+          <mat-datepicker-toggle matSuffix [for]="startDate"> </mat-datepicker-toggle>
+          <mat-datepicker #startDate disabled="false"></mat-datepicker>
+        </div>
+        <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2 pdl0">
+          <label>End Date</label>
+          <input
+            class="form-control exceptionInput"
+            [matDatepicker]="endDate"
+            [(ngModel)]="newException.endDate"
+            (ngModelChange)="getEndDate()"
+            placeholder="MM/DD/YYYY"
+            title="Enter a date in this format MM/DD/YYYY"
+            required
+            disabled
+          />
+          <mat-datepicker-toggle matSuffix [for]="endDate"> </mat-datepicker-toggle>
+          <mat-datepicker #endDate disabled="false"></mat-datepicker>
+        </div>
+        <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2 pdl0">
+          <label>Approver</label>
+          <app-combobox
+            [data]="approvers"
+            [initialSelected]="false"
+            (valueEmittor)="handleApproverValue($event)"
+            [comboType]="'attrCombo'"
+          >
+          </app-combobox>
+        </div>
+        <div class="col-md-1 col-xs-12 col-sm-12 col-lg-1 pdl0" *ngIf="planTypes">
+          <label>Plan Type</label>
+          <app-combobox
+            [data]="planTypes"
+            [initialSelected]="false"
+            (valueEmittor)="handlePlanType($event)"
+            [comboType]="'attrCombo'"
+          >
+          </app-combobox>
+        </div>
+        <div class="col-md-1 col-xs-12 col-sm-12 col-lg-1 pdl0" *ngIf="exceptionTypes">
+          <label>Exception Type</label>
+          <app-combobox
+            [data]="exceptionTypes"
+            [initialSelected]="false"
+            (valueEmittor)="handleMinFundExceptionType($event)"
+            [comboType]="'attrCombo'"
+          >
+          </app-combobox>
+        </div>
+        <div class="col-md-1 col-xs-12 col-sm-12 col-lg-1 pdl0" *ngIf="exceptionTypes && planTypes">
+          <label>Value</label>
+          <input
+            type="number"
+            [(ngModel)]="newException.minFundValue"
+            class="form-control exceptionInput"
+            id="newExceptionMinFundValue"
+            name="minFundValue"
+            required
+            [customMin]="minimumValueFund"
+            [customMax]="maximumValueFund"
+            #minFundValue="ngModel"
+            [disabled]="
+              newException.minFundType !== null && newException.minFundType === exceptionTypes[2]
+            "
+            min="0"
+            oninput="validity.valid||(value='');"
+          />
+          <div
+            class="form-control-feedback"
+            *ngIf="minFundValue.errors && (minFundValue.dirty || minFundValue.touched)"
+          >
+            <p *ngIf="minFundValue.errors.required">Value is required</p>
+            <p *ngIf="minFundValue.errors.customMin">
+              Value should not be less than {{ minimumValueFund }}
+            </p>
+            <p *ngIf="minFundValue.errors.customMax">
+              Value should not be greater than {{ maximumValueFund }}
+            </p>
+          </div>
+        </div>
+        <div class="clear-fix"></div>
+      </div>
+      <div class="clear-fix"></div>
+      <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 pd0">
+        <button
+          class="btn btn-primary newExceptionBtn"
+          [disabled]="!createButtonDisable"
+          (click)="onCreate()"
+        >
+          Create Exception
+        </button>
+      </div>
+      <div class="clear-fix"></div>
+    </div>
+  </div>
+</div>
+
+<!--  -->

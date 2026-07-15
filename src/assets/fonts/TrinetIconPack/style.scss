@@ -1,0 +1,860 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../../fonts/TrinetIconPack/fonts/icomoon.eot?oi3bce');
+  src:  url('../../fonts/TrinetIconPack/fonts/icomoon.eot?oi3bce#iefix') format('embedded-opentype'),
+    url('../../fonts/TrinetIconPack/fonts/icomoon.ttf?oi3bce') format('truetype'),
+    url('../../fonts/TrinetIconPack/fonts/icomoon.woff?oi3bce') format('woff'),
+    url('../../fonts/TrinetIconPack/fonts/icomoon.svg?oi3bce#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-icon_legacy .path1:before {
+  content: "\e974";
+  color: rgb(23, 22, 23);
+}
+.icon-icon_legacy .path2:before {
+  content: "\e975";
+  margin-left: -1.125em;
+  color: rgb(255, 255, 255);
+}
+.icon-icon_notStarted-task:before {
+  content: "\e973";
+}
+.icon-icon_current-step:before {
+  content: "\e972";
+}
+.icon-icon-icon_people:before {
+  content: "\e971";
+}
+.icon-icon_Disability:before {
+  content: "\e969";
+}
+.icon-icon_FSA:before {
+  content: "\e96d";
+}
+.icon-icon_HSA:before {
+  content: "\e96e";
+}
+.icon-icon_medical_GS:before {
+  content: "\e96f";
+}
+.icon-icon_vision_GS:before {
+  content: "\e970";
+}
+.icon-icon_accident:before {
+  content: "\e965";
+}
+.icon-icon_basiclife-add:before {
+  content: "\e966";
+}
+.icon-icon_critical-illness:before {
+  content: "\e967";
+}
+.icon-icon_dental:before {
+  content: "\e968";
+}
+.icon-icon_hospital-indemnity:before {
+  content: "\e96a";
+}
+.icon-icon_supplemental-add:before {
+  content: "\e96b";
+}
+.icon-icon_supplemental-term-life:before {
+  content: "\e96c";
+}
+.icon-icon-new-window:before {
+  content: "\e964";
+}
+.icon-icon-check-circle-fill:before {
+  content: "\e963";
+}
+.icon-icon-wrench:before {
+  content: "\e961";
+}
+.icon-icon-refresh2:before {
+  content: "\e962";
+}
+.icon-icon_ExportToExcel:before {
+  content: "\e95c";
+}
+.icon-icon_Health-LgDisplay:before {
+  content: "\e95d";
+}
+.icon-icon_LifenDisability-LgDisplay:before {
+  content: "\e95e";
+}
+.icon-icon_Beneficiaries-LgDisplay:before {
+  content: "\e95f";
+}
+.icon-icon_Dependents-LgDisplay:before {
+  content: "\e960";
+}
+.icon-icon_calendar-biWeekly:before {
+  content: "\e958";
+}
+.icon-icon_calendar-Monthly:before {
+  content: "\e959";
+}
+.icon-icon_calendar-SemiMonthly:before {
+  content: "\e95a";
+}
+.icon-icon_calendar-Weekly:before {
+  content: "\e95b";
+}
+.icon-icon_close:before {
+  content: "\e957";
+}
+.icon-icon_menu:before {
+  content: "\e956";
+}
+.icon-icon_chat:before {
+  content: "\e955";
+}
+.icon-icon-add-circle:before {
+  content: "\e954";
+}
+.icon-icon_123:before {
+  content: "\e952";
+}
+.icon-icon_abc:before {
+  content: "\e953";
+}
+.icon-icon-calender:before {
+  content: "\e951";
+}
+.icon-icon-arrow-right:before {
+  content: "\e94f";
+  color: #444c5c;
+}
+.icon-icon-arrow-left:before {
+  content: "\e950";
+  color: #444c5c;
+}
+.icon-icon-review:before {
+  content: "\e94e";
+}
+.icon-icon_GridView:before {
+  content: "\e94d";
+}
+.icon-icon_activity_log:before {
+  content: "\e94b";
+}
+.icon-icon_my_reports:before {
+  content: "\e94c";
+}
+.icon-icon_in_progress:before {
+  content: "\e94a";
+}
+.icon-icon_additional_options:before {
+  content: "\e944";
+}
+.icon-icon_complete:before {
+  content: "\e945";
+}
+.icon-icon_favorite:before {
+  content: "\e946";
+}
+.icon-icon_save:before {
+  content: "\e947";
+}
+.icon-icon_toolbox:before {
+  content: "\e948";
+}
+.icon-icon_collapse-GS:before {
+  content: "\e943";
+}
+.icon-icon_expand-GS:before {
+  content: "\e942";
+}
+.icon-icon_Open-Book:before {
+  content: "\e949";
+}
+.icon-icon_Employee-Family:before {
+  content: "\e940";
+}
+.icon-icon_Employee-Only:before {
+  content: "\e941";
+}
+.icon-icon_Close-all:before {
+  content: "\e93f";
+}
+.icon-icon_expand:before {
+  content: "\e93e";
+}
+.icon-icon_expand-all:before {
+  content: "\e93d";
+}
+.icon-Chevron_Bottom:before {
+  content: "\e93b";
+}
+.icon-Chevron_Top:before {
+  content: "\e93c";
+}
+.icon-icon_admin_manager_nav:before {
+  content: "\e939";
+}
+.icon-icon_employee_nav:before {
+  content: "\e93a";
+}
+.icon-icon_download_2:before {
+  content: "\e938";
+}
+.icon-icon_compliance:before {
+  content: "\e937";
+}
+.icon-icon_filter:before {
+  content: "\e934";
+}
+.icon-icon_filter_up:before {
+  content: "\e935";
+}
+.icon-icon_filter_down:before {
+  content: "\e936";
+}
+.icon-icon_help:before {
+  content: "\e933";
+}
+.icon-icon_integration:before {
+  content: "\e931";
+}
+.icon-icon_reports:before {
+  content: "\a139";
+}
+.icon-icon_payroll:before {
+  content: "\e92b";
+}
+.icon-icon_link:before {
+  content: "\e932";
+}
+.icon-icon_pagination_right_arrow:before {
+  content: "\e92f";
+}
+.icon-icon_pagination_left_arrow:before {
+  content: "\e930";
+}
+.icon-icon_marketplace:before {
+  content: "\e92e";
+}
+.icon-icon_performance_training:before {
+  content: "\e92d";
+}
+.icon-icon_hire:before {
+  content: "\e92c";
+}
+.icon-icon_scroll_up_arrow:before {
+  content: "\e92a";
+}
+.icon-icon_drag:before {
+  content: "\e929";
+}
+.icon-icon_family:before {
+  content: "\e928";
+}
+.icon-icon_print:before {
+  content: "\e926";
+}
+.icon-icon_website:before {
+  content: "\e927";
+}
+.icon-icon_emergency:before {
+  content: "\e922";
+}
+.icon-icon_info:before {
+  content: "\e923";
+}
+.icon-icon_employment:before {
+  content: "\e924";
+}
+.icon-icon_calendar:before {
+  content: "\e925";
+}
+.icon-icon_request_time_off:before {
+  content: "\e91b";
+}
+.icon-icon_work_inbox:before {
+  content: "\e91e";
+}
+.icon-icon_company_announcements:before {
+  content: "\e91f";
+}
+.icon-icon_important_notices .path1:before {
+  content: "\e920";
+  color: rgb(0, 0, 0);
+}
+.icon-icon_important_notices .path2:before {
+  content: "\e921";
+  margin-left: -1em;
+  color: rgb(2, 2, 2);
+}
+.icon-icon_benefits:before {
+  content: "\e91d";
+}
+.icon-icon_dashboard:before {
+  content: "\e904";
+}
+.icon-icon_profile:before {
+  content: "\e909";
+}
+.icon-icon_time:before {
+  content: "\e90a";
+}
+.icon-icon_money:before {
+  content: "\e90b";
+}
+.icon-icon_directory:before {
+  content: "\e90c";
+}
+.icon-icon_forms:before {
+  content: "\e90d";
+}
+.icon-icon_email:before {
+  content: "\e90e";
+}
+.icon-icon_settings:before {
+  content: "\e90f";
+}
+.icon-icon_location:before {
+  content: "\e910";
+}
+.icon-icon_employee:before {
+  content: "\e911";
+}
+.icon-icon_department:before {
+  content: "\e912";
+}
+.icon-icon_mobile:before {
+  content: "\e913";
+}
+.icon-icon_phone:before {
+  content: "\e914";
+}
+.icon-icon_settings_unified:before {
+  content: "\e915";
+}
+.icon-icon_calendar_unified:before {
+  content: "\e907";
+}
+.icon-icon_company_unified:before {
+  content: "\e908";
+}
+.icon-icon_performance_unified:before {
+  content: "\e916";
+}
+.icon-icon_benefits_unified:before {
+  content: "\e918";
+}
+.icon-icon_time_unified:before {
+  content: "\e917";
+}
+.icon-icon_money_unified:before {
+  content: "\e919";
+}
+.icon-icon_dashboard_unified:before {
+  content: "\e91a";
+}
+.icon-icon_smile:before {
+  content: "\e91c";
+}
+.icon-icon_employee2:before {
+  content: "\e905";
+}
+.icon-icon_thumbsup:before {
+  content: "\e906";
+}
+.icon-icon_balloons:before {
+  content: "\e903";
+}
+.icon-icon_downarrow:before {
+  content: "\e900";
+}
+.icon-icon_uparrow:before {
+  content: "\e901";
+}
+.icon-icon_spouse:before {
+  content: "\e902";
+}
+.icon-icon_additional_benefits:before {
+  content: "\e067";
+}
+.icon-icon_star:before {
+  content: "\e066";
+}
+.icon-icon_mobilephone:before {
+  content: "\e065";
+}
+.icon-icon_import:before {
+  content: "\e064";
+}
+.icon-icon_edit_column:before {
+  content: "\e063";
+}
+.icon-icon_unified_cogwheel:before {
+  content: "\e062";
+}
+.icon-icon_unified_logout:before {
+  content: "\e061";
+}
+.icon-icon_unified_search:before {
+  content: "\e060";
+}
+.icon-icon_plus:before {
+  content: "\e059";
+}
+.icon-icon_minus:before {
+  content: "\e058";
+}
+.icon-icon_unified_bell:before {
+  content: "\e057";
+}
+.icon-icon_benefitsumbrella:before {
+  content: "\e056";
+}
+.icon-icon_x:before {
+  content: "\e055";
+}
+.icon-icon_checkmark:before {
+  content: "\e054";
+}
+.icon-icon_printer:before {
+  content: "\e052";
+}
+.icon-icon_calculator:before {
+  content: "\e051";
+}
+.icon-icon_commuter:before {
+  content: "\e050";
+}
+.icon-icon_totalemployees:before {
+  content: "\e049";
+}
+.icon-icon_employeePlusOne:before {
+  content: "\e048";
+}
+.icon-icon_paid:before {
+  content: "\e045";
+}
+.icon-icon_makeinactive:before {
+  content: "\e044";
+}
+.icon-icon_history:before {
+  content: "\e043";
+}
+.icon-icon_comment:before {
+  content: "\e042";
+}
+.icon-icon_assign:before {
+  content: "\e041";
+}
+.icon-icon_archive:before {
+  content: "\e040";
+}
+.icon-icon_decline:before {
+  content: "\e039";
+}
+.icon-icon_approve:before {
+  content: "\e038";
+}
+.icon-icon_close_mobile:before {
+  content: "\e036";
+  color: #000;
+}
+.icon-icon_dollar_mobile:before {
+  content: "\e035";
+  color: #000;
+}
+.icon-icon_piggybank_mobile:before {
+  content: "\e034";
+  color: #000;
+}
+.icon-icon_flip_mobile:before {
+  content: "\e033";
+}
+.icon-icon_zoom_mobile:before {
+  content: "\e032";
+}
+.icon-icon_refresh:before {
+  content: "\e031";
+}
+.icon-icon_find_circle:before {
+  content: "\e030";
+}
+.icon-icon_list_circle:before {
+  content: "\e029";
+}
+.icon-icon_orgchart_circle:before {
+  content: "\e028";
+}
+.icon-icon_z-a_sort:before {
+  content: "\e027";
+}
+.icon-icon_a-z_sort:before {
+  content: "\e026";
+}
+.icon-icon_calendar_circle:before {
+  content: "\e025";
+}
+.icon-icon_home_circle:before {
+  content: "\e024";
+}
+.icon-icon_youtube:before {
+  content: "\e023";
+}
+.icon-icon_wiki:before {
+  content: "\e022";
+}
+.icon-icon_cash:before {
+  content: "\e021";
+}
+.icon-icon_employees:before {
+  content: "\e020";
+}
+.icon-icon_email_circle:before {
+  content: "\e019";
+}
+.icon-icon_medical:before {
+  content: "\e018";
+}
+.icon-icon_tooth:before {
+  content: "\e017";
+}
+.icon-icon_vision:before {
+  content: "\e016";
+}
+.icon-icon_heart_lifeline:before {
+  content: "\e015";
+}
+.icon-icon_wheelchair:before {
+  content: "\e014";
+}
+.icon-icon_piggybank:before {
+  content: "\e013";
+}
+.icon-icon_flip:before {
+  content: "\e012";
+}
+.icon-icon_happy:before {
+  content: "\e010";
+}
+.icon-icon_bell:before {
+  content: "\e009";
+}
+.icon-icon_excel:before {
+  content: "\e008";
+}
+.icon-icon_word:before {
+  content: "\e007";
+}
+.icon-icon_pdf:before {
+  content: "\e006";
+}
+.icon-icon_backtotop_hover:before {
+  content: "\e005";
+}
+.icon-icon_backtotop:before {
+  content: "\e004";
+}
+.icon-icon_CoachArrow4:before {
+  content: "\e003";
+}
+.icon-icon_CoachArrow3:before {
+  content: "\e002";
+}
+.icon-icon_CoachArrow2:before {
+  content: "\e001";
+}
+.icon-icon_CoachArrow1:before {
+  content: "\e000";
+}
+.icon-icon_Work_Info:before {
+  content: "\b108";
+}
+.icon-icon_state:before {
+  content: "\c810";
+}
+.icon-icon_local:before {
+  content: "\c816";
+}
+.icon-icon_home:before {
+  content: "\c802";
+}
+.icon-icon_federal:before {
+  content: "\c805";
+}
+.icon-icon_contact:before {
+  content: "\a157";
+}
+.icon-icon_reimbursement:before {
+  content: "\c806";
+}
+.icon-icon_trash:before {
+  content: "\c804";
+}
+.icon-icon_report_down:before {
+  content: "\c801";
+}
+.icon-icon_report_up:before {
+  content: "\c800";
+}
+.icon-icon_view_profile:before {
+  content: "\b112";
+}
+.icon-icon_Lock:before {
+  content: "\b111";
+}
+.icon-icon_Star:before {
+  content: "\b107";
+}
+.icon-icon_Edit:before {
+  content: "\b105";
+}
+.icon-icon_print_circle:before {
+  content: "\b104";
+}
+.icon-icon_export_circle:before {
+  content: "\b103";
+}
+.icon-icon_orgchart:before {
+  content: "\b102";
+}
+.icon-icon_company:before {
+  content: "\b100";
+}
+.icon-icon_admin:before {
+  content: "\a166";
+}
+.icon-icon_data:before {
+  content: "\a165";
+}
+.icon-icon_performance:before {
+  content: "\a164";
+}
+.icon-icon_trinet:before {
+  content: "\a161";
+}
+.icon-icon_umbrella:before {
+  content: "\a160";
+}
+.icon-icon_faq:before {
+  content: "\a158";
+}
+.icon-icon_radiobutton_empty:before {
+  content: "\a156";
+}
+.icon-icon_radiobutton_select:before {
+  content: "\a155";
+}
+.icon-icon_checkmark_emptybox:before {
+  content: "\a154";
+}
+.icon-icon_checkmark_mixed:before {
+  content: "\a153";
+}
+.icon-icon_checkmarkwithbox:before {
+  content: "\a152";
+}
+.icon-icon_Disclosure_Collapse:before {
+  content: "\a151";
+}
+.icon-icon_Disclosure_Expand:before {
+  content: "\a150";
+}
+.icon-icon_Dropdown_Arrow:before {
+  content: "\a149";
+}
+.icon-icon_Zoom:before {
+  content: "\a148";
+}
+.icon-icon_file:before {
+  content: "\a147";
+  color: #444;
+}
+.icon-icon_triangle:before {
+  content: "\a145";
+  color: #444;
+}
+.icon-icon_semicircle:before {
+  content: "\a144";
+  color: #444;
+}
+.icon-icon_circle:before {
+  content: "\a143";
+  color: #444;
+}
+.icon-icon_export:before {
+  content: "\a141";
+  color: #444;
+}
+.icon-icon_download:before {
+  content: "\a140";
+  color: #444;
+}
+.icon-icon_W2:before {
+  content: "\a138";
+  color: #444;
+}
+.icon-icon_Calculator:before {
+  content: "\a137";
+  color: #444;
+}
+.icon-icon_metro_building:before {
+  content: "\a136";
+  color: #444;
+}
+.icon-icon_UA:before {
+  content: "\a135";
+  color: #444;
+}
+.icon-icon_LeaveWithoutPay .path1:before {
+  content: "\a134";
+  color: #888888;
+}
+.icon-icon_LeaveWithoutPay .path2:before {
+  content: "\a13a";
+  margin-left: -1em;
+  color: #808184;
+}
+.icon-icon_LeaveWithoutPay .path3:before {
+  content: "\a13b";
+  margin-left: -1em;
+  color: #808184;
+}
+.icon-icon_LeaveWithoutPay .path4:before {
+  content: "\a13c";
+  margin-left: -1em;
+  color: #808184;
+}
+.icon-icon_LeaveWithoutPay .path5:before {
+  content: "\a13d";
+  margin-left: -1em;
+  color: #808184;
+}
+.icon-icon_LeaveWithoutPay .path6:before {
+  content: "\a13e";
+  margin-left: -1em;
+  color: #808184;
+}
+.icon-icon_LeaveWithoutPay .path7:before {
+  content: "\a13f";
+  margin-left: -1em;
+  color: #808184;
+}
+.icon-icon_LeaveWithoutPay .path8:before {
+  content: "\a146";
+  margin-left: -1em;
+  color: #808184;
+}
+.icon-icon_LeaveWithoutPay .path9:before {
+  content: "\a14a";
+  margin-left: -1em;
+  color: #808184;
+}
+.icon-icon_processed:before {
+  content: "\a133";
+}
+.icon-icon_rss:before {
+  content: "\a132";
+}
+.icon-icon_linkedin:before {
+  content: "\a131";
+}
+.icon-icon_googleplus:before {
+  content: "\a130";
+}
+.icon-icon_twitter:before {
+  content: "\a129";
+}
+.icon-icon_facebook:before {
+  content: "\a128";
+}
+.icon-icon_declined:before {
+  content: "\a127";
+}
+.icon-icon_pending:before {
+  content: "\a126";
+}
+.icon-icon_approved:before {
+  content: "\a125";
+}
+.icon-icon_Rollover:before {
+  content: "\a124";
+}
+.icon-icon_Floating:before {
+  content: "\a123";
+  color: #444;
+}
+.icon-icon_Check:before {
+  content: "\a122";
+}
+.icon-icon_add:before {
+  content: "\a121";
+}
+.icon-icon_Error:before {
+  content: "\a120";
+}
+.icon-icon_Warning:before {
+  content: "\a119";
+}
+.icon-icon_forward:before {
+  content: "\a117";
+}
+.icon-icon_filter2:before {
+  content: "\a116";
+}
+.icon-icon_Sick:before {
+  content: "\a115";
+}
+.icon-icon_gauge:before {
+  content: "\a114";
+}
+.icon-icon_back:before {
+  content: "\a113";
+}
+.icon-icon_ListView:before {
+  content: "\a112";
+}
+.icon-icon_Other:before {
+  content: "\a110";
+}
+.icon-icon_Personal:before {
+  content: "\a109";
+}
+.icon-icon_Employee:before {
+  content: "\a108";
+}
+.icon-icon_Bereavement:before {
+  content: "\a106";
+}
+.icon-icon_JuryDuty:before {
+  content: "\a105";
+}
+.icon-icon_ExtendedLeave:before {
+  content: "\a104";
+}
+.icon-icon_LeaveRequest:before {
+  content: "\a103";
+}
+.icon-icon_Vacation:before {
+  content: "\a102";
+}
+.icon-close-temp:before {
+  content: "\a101";
+}
+.icon-rearrangeicon:before {
+  content: "\a100";
+}
