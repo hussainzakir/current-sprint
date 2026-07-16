@@ -1,0 +1,135 @@
+<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 pd0">
+  <button
+    type="button"
+    class="btn addNewBtn"
+    (click)="isCollapsed = !isCollapsed"
+    [attr.aria-expanded]="!isCollapsed"
+    aria-controls="newLifeDiExceptionBlock"
+  >
+    <span class="icon-icon-add-circle"></span>Add New Exception
+  </button>
+</div>
+<div class="clear-fix"></div>
+<div id="newLifeDiExceptionBlock" [ngbCollapse]="!isCollapsed">
+  <div class="newExceptionBlock" *ngIf="isCollapsed">
+    <div class="spinner" [hidden]="!spinnerShow"></div>
+    <div [hidden]="spinnerShow">
+      <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 pd0">
+        <div class="col-md-1 col-xs-12 col-sm-12 col-lg-1 pdl0">
+          <label>Company Code</label>
+          <input
+            type="text"
+            [(ngModel)]="newException.companyCode"
+            (focusout)="getCompany()"
+            class="form-control exceptionInput"
+            id="newLifeDiExceptionCompanyCode"
+            required
+            name="companyCode"
+          />
+        </div>
+        <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2 pdl0">
+          <label>Company Name</label>
+          <input
+            type="text"
+            [(ngModel)]="newException.companyName"
+            class="form-control exceptionInput"
+            id="newLifeDiExceptionCompanyName"
+            name="companyName"
+            required
+            disabled
+          />
+        </div>
+        <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2 pdl0">
+          <label>Start Date</label>
+          <input
+            class="exceptionInput"
+            [matDatepicker]="startDate"
+            [(ngModel)]="newException.startDate"
+            (ngModelChange)="getStartDate()"
+            class="form-control exceptionInput"
+            id="newLifeDiExceptionStartDate"
+            name="startDate"
+            placeholder="MM/DD/YYYY"
+            title="Enter a date in this format MM/DD/YYYY"
+            required
+            disabled
+          />
+          <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+          <mat-datepicker #startDate></mat-datepicker>
+        </div>
+        <div class="col-md-2 col-xs-12 col-sm-12 col-lg-2 pdl0">
+          <label>End Date</label>
+          <input
+            class="form-control exceptionInput"
+            [matDatepicker]="endDate"
+            [(ngModel)]="newException.endDate"
+            (ngModelChange)="getEndDate()"
+            placeholder="MM/DD/YYYY"
+            title="Enter a date in this format MM/DD/YYYY"
+            required
+            disabled
+          />
+          <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+          <mat-datepicker #endDate></mat-datepicker>
+        </div>
+        <div class="col-md-1 col-xs-12 col-sm-12 col-lg-1 pdl0">
+          <label>Assigned Life Band</label>
+          <input
+            type="text"
+            [(ngModel)]="newException.assignedLifeBand"
+            class="form-control exceptionInput"
+            id="newLifeDiExceptionAssignedLifeBand"
+            name="assignedLifeBand"
+            disabled
+          />
+        </div>
+        <div class="col-md-1 col-xs-12 col-sm-12 col-lg-1 pdl0">
+          <label>Override Life Band</label>
+          <app-combobox
+            [data]="bandOptions"
+            [initialSelected]="false"
+            (valueEmittor)="handleOverrideLifeBandValue($event)"
+            [comboType]="'ogCombo'"
+          ></app-combobox>
+        </div>
+        <div class="col-md-1 col-xs-12 col-sm-12 col-lg-1 pdl0">
+          <label>Assigned Disability Band</label>
+          <input
+            type="text"
+            [(ngModel)]="newException.assignedDisabilityBand"
+            class="form-control exceptionInput"
+            id="newLifeDiExceptionAssignedDisabilityBand"
+            name="assignedDisabilityBand"
+            disabled
+          />
+        </div>
+        <div class="col-md-1 col-xs-12 col-sm-12 col-lg-1 pdl0">
+          <label>Override Disability Band</label>
+          <app-combobox
+            [data]="bandOptions"
+            [initialSelected]="false"
+            (valueEmittor)="handleOverrideDisabilityBandValue($event)"
+            [comboType]="'ogCombo'"
+          ></app-combobox>
+        </div>
+        <div class="col-md-1 col-xs-12 col-sm-12 col-lg-1 pdl0">
+          <label>Approver</label>
+          <app-combobox
+            [data]="approvers"
+            [initialSelected]="false"
+            (valueEmittor)="handleApproverValue($event)"
+            [comboType]="'attrCombo'"
+          ></app-combobox>
+        </div>
+        <div class="clear-fix"></div>
+      </div>
+      <div class="clear-fix"></div>
+      <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 pd0">
+        <button class="btn btn-primary newExceptionBtn" [disabled]="!createButtonDisable" (click)="onCreate()">
+          Create Exception
+        </button>
+      </div>
+      <div class="clear-fix"></div>
+    </div>
+  </div>
+</div>
