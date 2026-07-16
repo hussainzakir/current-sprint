@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 /// <reference types="jasmine" />
 
+=======
+>>>>>>> b9c2f74b4ebf1d9e1c7b06fdd1a4a10877fc94e3
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
