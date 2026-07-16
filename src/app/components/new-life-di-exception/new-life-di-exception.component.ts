@@ -21,13 +21,8 @@ export class NewLifeDiExceptionComponent implements OnInit {
   spinnerShow = false;
   createButtonDisable = false;
   isCollapsed = false;
-<<<<<<< HEAD
-  loggedinEmpId = '';
-  loggedInCompanyCode = '';
-=======
   loggedinEmpId: string;
   loggedInCompanyCode: string;
->>>>>>> b9c2f74b4ebf1d9e1c7b06fdd1a4a10877fc94e3
 
   constructor(
     private readonly exceptionService: ExcpetionService,
@@ -60,11 +55,7 @@ export class NewLifeDiExceptionComponent implements OnInit {
     this.exceptionService
       .getAllCompanies(this.loggedInCompanyCode, this.loggedinEmpId, this.newException.companyCode)
       .pipe(
-<<<<<<< HEAD
-        map((data: any) => {
-=======
         map((data) => {
->>>>>>> b9c2f74b4ebf1d9e1c7b06fdd1a4a10877fc94e3
           const companyCode = this.newException.companyCode.toUpperCase();
           if (data && data.hasOwnProperty(companyCode)) {
             this.newException.companyName = data[companyCode];
