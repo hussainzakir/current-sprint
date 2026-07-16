@@ -35,6 +35,7 @@ import { WarningDialogComponent } from './components/warning-dialog/warning-dial
 import { PlanDeselectionExceptionComponent } from './components/plan-deselection-exception/plan-deselection-exception.component';
 import { PlanAttributesComparisionComponent } from './components/plan-attributes-comparision/plan-attributes-comparision.component';
 import { LifeDisabilityBandExceptionsComponent } from './components/life-disability-band-exceptions/life-disability-band-exceptions.component';
+import { NewLifeDiExceptionComponent } from './components/new-life-di-exception/new-life-di-exception.component';
 
 export function BASessionFactory(commonService: CommonService) {
   return () => commonService.loadSession();
@@ -59,7 +60,8 @@ export function BASessionFactory(commonService: CommonService) {
     WarningDialogComponent,
     PlanDeselectionExceptionComponent,
     PlanAttributesComparisionComponent,
-    LifeDisabilityBandExceptionsComponent
+    LifeDisabilityBandExceptionsComponent,
+    NewLifeDiExceptionComponent
     ],
   imports: [
     BrowserModule,

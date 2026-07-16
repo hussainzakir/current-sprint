@@ -14,8 +14,8 @@ class="page-banner"
 </ng-template>
 <div class="gs-card content">
 
-<app-new-exception [approvers]="approvers" [exceptions]="overrideData"
-			(newExceptionEmittor)="addNewException($event)" (bannerMsgEmittor)="handleNewExceptionBanner($event)" [deselectionException]="true"></app-new-exception>
+<app-new-life-di-exception [approvers]="approvers" [exceptions]="overrideData"
+			(newExceptionEmittor)="addNewException($event)" (bannerMsgEmittor)="handleNewExceptionBanner($event)"></app-new-life-di-exception>
 
 <div class="exceptionTable" #exceptionsTable>
 		<div class="maskSpinner" [style.width.px]="exceptionsTable.offsetWidth"

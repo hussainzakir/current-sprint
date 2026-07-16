@@ -44,6 +44,11 @@ const routes: Routes = [
     component: LifeDisabilityBandExceptionsComponent,
     data: { animation: "" },
   },
+  {
+    path: "LifeAndDisabilityBand-Exceptions",
+    component: LifeDisabilityBandExceptionsComponent,
+    data: { animation: "" },
+  },
 ];
 
 @NgModule({
