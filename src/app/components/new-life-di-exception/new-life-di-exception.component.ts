@@ -21,8 +21,8 @@ export class NewLifeDiExceptionComponent implements OnInit {
   spinnerShow = false;
   createButtonDisable = false;
   isCollapsed = false;
-  loggedinEmpId: string;
-  loggedInCompanyCode: string;
+  loggedinEmpId = '';
+  loggedInCompanyCode = '';
 
   constructor(
     private readonly exceptionService: ExcpetionService,
@@ -51,22 +51,55 @@ export class NewLifeDiExceptionComponent implements OnInit {
       return;
     }
 
-    this.newException.companyCode = this.newException.companyCode.toUpperCase();
-    this.exceptionService
-      .getAllCompanies(this.loggedInCompanyCode, this.loggedinEmpId, this.newException.companyCode)
+    this.newException.companyCode =
+      this.newException.companyCode.toUpperCase();
+
+    const companies$ = this.exceptionService.getAllCompanies(
+      this.loggedInCompanyCode,
+      this.loggedinEmpId,
+      this.newException.companyCode,
+    );
+
+    if (!companies$) {
+      this.newException.companyName = '';
+      this.newException.assignedLifeBand = '';
+      this.newException.assignedDisabilityBand = '';
+
+      this.bannerMsgEmittor.emit(
+        new BannerMessage(
+          'Enter a valid Company Code',
+          AppStringConstants.TYPE_ERROR,
+          true,
+        ),
+      );
+
+      return;
+    }
+
+    companies$
       .pipe(
         map((data) => {
-          const companyCode = this.newException.companyCode.toUpperCase();
+          const companyCode =
+            this.newException.companyCode.toUpperCase();
+
           if (data && data.hasOwnProperty(companyCode)) {
             this.newException.companyName = data[companyCode];
             this.syncExistingBandValues();
-            this.bannerMsgEmittor.emit(new BannerMessage('', '', false));
+
+            this.bannerMsgEmittor.emit(
+              new BannerMessage('', '', false),
+            );
           } else {
             this.newException.companyName = '';
             this.newException.assignedLifeBand = '';
             this.newException.assignedDisabilityBand = '';
+
             this.bannerMsgEmittor.emit(
-              new BannerMessage('Enter a valid Company Code', AppStringConstants.TYPE_ERROR, true),
+              new BannerMessage(
+                'Enter a valid Company Code',
+                AppStringConstants.TYPE_ERROR,
+                true,
+              ),
             );
           }
         }),
@@ -79,22 +112,35 @@ export class NewLifeDiExceptionComponent implements OnInit {
           this.newException.companyName = '';
           this.newException.assignedLifeBand = '';
           this.newException.assignedDisabilityBand = '';
-          let message = err.status && (err.status === 401 || err.status === 403)
-            ? err.error?._error?.message
-            : err.error?.customMessage;
-          this.bannerMsgEmittor.emit(new BannerMessage(message, AppStringConstants.TYPE_ERROR, true));
+
+          const message =
+            err.status && (err.status === 401 || err.status === 403)
+              ? err.error?._error?.message
+              : err.error?.customMessage;
+
+          this.bannerMsgEmittor.emit(
+            new BannerMessage(
+              message,
+              AppStringConstants.TYPE_ERROR,
+              true,
+            ),
+          );
         },
       );
   }
 
   syncExistingBandValues() {
     const matchingException = this.exceptions.find(
-      (exception) => exception.companyCode?.toUpperCase() === this.newException.companyCode.toUpperCase(),
+      (exception) =>
+        exception.companyCode?.toUpperCase() ===
+        this.newException.companyCode.toUpperCase(),
     );
 
     if (matchingException) {
-      this.newException.assignedLifeBand = matchingException.assignedLifeBand;
-      this.newException.assignedDisabilityBand = matchingException.assignedDisabilityBand;
+      this.newException.assignedLifeBand =
+        matchingException.assignedLifeBand;
+      this.newException.assignedDisabilityBand =
+        matchingException.assignedDisabilityBand;
     } else {
       this.newException.assignedLifeBand = '';
       this.newException.assignedDisabilityBand = '';
@@ -103,14 +149,18 @@ export class NewLifeDiExceptionComponent implements OnInit {
 
   getStartDate() {
     if (this.newException?.startDate) {
-      this.newException.startDate = this.formatDate(this.newException.startDate);
+      this.newException.startDate = this.formatDate(
+        this.newException.startDate,
+      );
     }
     this.createButtonDisable = this.validateException();
   }
 
   getEndDate() {
     if (this.newException?.endDate) {
-      this.newException.endDate = this.formatDate(this.newException.endDate);
+      this.newException.endDate = this.formatDate(
+        this.newException.endDate,
+      );
     }
     this.createButtonDisable = this.validateException();
   }
@@ -164,6 +214,7 @@ export class NewLifeDiExceptionComponent implements OnInit {
     }
 
     this.spinnerShow = true;
+
     const createdException = {
       ...this.newException,
       id: Date.now(),
@@ -171,6 +222,7 @@ export class NewLifeDiExceptionComponent implements OnInit {
     };
 
     this.newExceptionEmittor.emit(createdException);
+
     this.newException = {
       companyCode: '',
       companyName: '',
@@ -183,11 +235,17 @@ export class NewLifeDiExceptionComponent implements OnInit {
       approverId: '',
       approverName: '',
     };
+
     this.isCollapsed = false;
     this.spinnerShow = false;
     this.createButtonDisable = false;
+
     this.bannerMsgEmittor.emit(
-      new BannerMessage('Exception Added Successfully', AppStringConstants.TYPE_SUCCESS, true),
+      new BannerMessage(
+        'Exception Added Successfully',
+        AppStringConstants.TYPE_SUCCESS,
+        true,
+      ),
     );
   }
 
