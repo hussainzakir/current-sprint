@@ -1,3 +1,4 @@
+
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators';
@@ -11,8 +12,8 @@ import { ExcpetionService } from 'src/app/services/excpetion.service';
   templateUrl: './new-life-di-exception.component.html',
 })
 export class NewLifeDiExceptionComponent implements OnInit {
+
   @Input() approvers: any[] = [];
-  @Input() exceptions: any[] = [];
   @Output() newExceptionEmittor = new EventEmitter<any>();
   @Output() bannerMsgEmittor = new EventEmitter<BannerMessage>();
 
@@ -21,8 +22,8 @@ export class NewLifeDiExceptionComponent implements OnInit {
   spinnerShow = false;
   createButtonDisable = false;
   isCollapsed = false;
-  loggedinEmpId = '';
-  loggedInCompanyCode = '';
+  loggedinEmpId: string;
+  loggedInCompanyCode: string;
 
   constructor(
     private readonly exceptionService: ExcpetionService,
@@ -35,13 +36,12 @@ export class NewLifeDiExceptionComponent implements OnInit {
       companyName: '',
       startDate: '',
       endDate: '',
-      assignedLifeBand: '',
       overrideLifeBand: '',
-      assignedDisabilityBand: '',
       overrideDisabilityBand: '',
       approverId: '',
       approverName: '',
     };
+
     this.loggedinEmpId = this.commonService.getEmployeeId();
     this.loggedInCompanyCode = this.commonService.getCompanyId();
   }
@@ -51,49 +51,23 @@ export class NewLifeDiExceptionComponent implements OnInit {
       return;
     }
 
-    this.newException.companyCode =
-      this.newException.companyCode.toUpperCase();
+    this.newException.companyCode = this.newException.companyCode.toUpperCase();
 
-    const companies$ = this.exceptionService.getAllCompanies(
-      this.loggedInCompanyCode,
-      this.loggedinEmpId,
-      this.newException.companyCode,
-    );
-
-    if (!companies$) {
-      this.newException.companyName = '';
-      this.newException.assignedLifeBand = '';
-      this.newException.assignedDisabilityBand = '';
-
-      this.bannerMsgEmittor.emit(
-        new BannerMessage(
-          'Enter a valid Company Code',
-          AppStringConstants.TYPE_ERROR,
-          true,
-        ),
-      );
-
-      return;
-    }
-
-    companies$
+    this.exceptionService
+      .getAllCompanies(
+        this.loggedInCompanyCode,
+        this.loggedinEmpId,
+        this.newException.companyCode,
+      )
       .pipe(
         map((data) => {
-          const companyCode =
-            this.newException.companyCode.toUpperCase();
+          const companyCode = this.newException.companyCode.toUpperCase();
 
           if (data && data.hasOwnProperty(companyCode)) {
             this.newException.companyName = data[companyCode];
-            this.syncExistingBandValues();
-
-            this.bannerMsgEmittor.emit(
-              new BannerMessage('', '', false),
-            );
+            this.bannerMsgEmittor.emit(new BannerMessage('', '', false));
           } else {
             this.newException.companyName = '';
-            this.newException.assignedLifeBand = '';
-            this.newException.assignedDisabilityBand = '';
-
             this.bannerMsgEmittor.emit(
               new BannerMessage(
                 'Enter a valid Company Code',
@@ -110,8 +84,6 @@ export class NewLifeDiExceptionComponent implements OnInit {
         },
         (err: HttpErrorResponse) => {
           this.newException.companyName = '';
-          this.newException.assignedLifeBand = '';
-          this.newException.assignedDisabilityBand = '';
 
           const message =
             err.status && (err.status === 401 || err.status === 403)
@@ -129,74 +101,40 @@ export class NewLifeDiExceptionComponent implements OnInit {
       );
   }
 
-  syncExistingBandValues() {
-    const matchingException = this.exceptions.find(
-      (exception) =>
-        exception.companyCode?.toUpperCase() ===
-        this.newException.companyCode.toUpperCase(),
-    );
-
-    if (matchingException) {
-      this.newException.assignedLifeBand =
-        matchingException.assignedLifeBand;
-      this.newException.assignedDisabilityBand =
-        matchingException.assignedDisabilityBand;
-    } else {
-      this.newException.assignedLifeBand = '';
-      this.newException.assignedDisabilityBand = '';
-    }
-  }
-
   getStartDate() {
     if (this.newException?.startDate) {
-      this.newException.startDate = this.formatDate(
-        this.newException.startDate,
-      );
+      this.newException.startDate = this.formatDate(this.newException.startDate);
     }
     this.createButtonDisable = this.validateException();
   }
 
   getEndDate() {
     if (this.newException?.endDate) {
-      this.newException.endDate = this.formatDate(
-        this.newException.endDate,
-      );
+      this.newException.endDate = this.formatDate(this.newException.endDate);
     }
     this.createButtonDisable = this.validateException();
   }
 
   handleApproverValue(value: any) {
-    if (!this.newException) {
-      return;
-    }
     this.newException.approverId = value;
     this.newException.approverName = this.approvers.find(
       ({ attributeValue }) => attributeValue === value,
     )?.name;
+
     this.createButtonDisable = this.validateException();
   }
 
   handleOverrideLifeBandValue(value: any) {
-    if (!this.newException) {
-      return;
-    }
     this.newException.overrideLifeBand = value;
     this.createButtonDisable = this.validateException();
   }
 
   handleOverrideDisabilityBandValue(value: any) {
-    if (!this.newException) {
-      return;
-    }
     this.newException.overrideDisabilityBand = value;
     this.createButtonDisable = this.validateException();
   }
 
   validateException() {
-    if (!this.newException) {
-      return false;
-    }
-
     return !!(
       this.newException.companyCode &&
       this.newException.companyName &&
@@ -228,9 +166,7 @@ export class NewLifeDiExceptionComponent implements OnInit {
       companyName: '',
       startDate: '',
       endDate: '',
-      assignedLifeBand: '',
       overrideLifeBand: '',
-      assignedDisabilityBand: '',
       overrideDisabilityBand: '',
       approverId: '',
       approverName: '',
