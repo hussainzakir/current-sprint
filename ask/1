@@ -1,0 +1,11 @@
+// can you go through the AC & tech details I have made the change in this file do you think it was feasible ? 
+
+old change 
+<app-new-exception [approvers]="approvers" [exceptions]="overrideData"
+			(newExceptionEmittor)="addNewException($event)" (bannerMsgEmittor)="handleNewExceptionBanner($event)" [deselectionException]="true"></app-new-exception>
+
+new change 
+<app-new-life-di-exception [approvers]="approvers" [exceptions]="overrideData"
+			(newExceptionEmittor)="addNewException($event)" (bannerMsgEmittor)="handleNewExceptionBanner($event)"></app-new-life-di-exception>
+
+// also I have created this new NewLifeDiExceptionComponent component, is it good or am I violating any tech details
